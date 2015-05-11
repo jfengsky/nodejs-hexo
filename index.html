@@ -68,8 +68,8 @@
   
     <article id="post-NSString" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/05/10/NSString/" class="article-date">
-  <time datetime="2015-05-10T14:09:13.000Z" itemprop="datePublished">2015-05-10</time>
+    <a href="/2015/05/11/NSString/" class="article-date">
+  <time datetime="2015-05-11T14:05:06.000Z" itemprop="datePublished">2015-05-11</time>
 </a>
     
   </div>
@@ -80,7 +80,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/10/NSString/">NSString</a>
+      <a class="article-title" href="/2015/05/11/NSString/">NSString</a>
     </h1>
   
 
@@ -173,11 +173,20 @@ range<span class="variable">.length</span> = <span class="number">3</span>;
 <span class="comment">/**
  * 字符串的拼接
  */</span>
+<span class="built_in">NSString</span> *string16 = <span class="string">@"abc"</span>;
+<span class="built_in">NSString</span> *string17 = <span class="string">@"xyz"</span>;
+
+<span class="built_in">NSString</span> *addString1 = [[<span class="built_in">NSString</span> alloc] initWithFormat:<span class="string">@"%@%@"</span>, string16, string17];
+<span class="built_in">NSString</span> *addString2 = [string16 stringByAppendingFormat:<span class="string">@"%@"</span>, string17];
+<span class="built_in">NSString</span> *addString3 = [string16 stringByAppendingString:string17];
+<span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, addString1);
+<span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, addString2);
+<span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, addString3);
 </code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.ieake.com/2015/05/10/NSString/" data-id="ci9ijem8k00056hfn9rk228hw" class="article-share-link">Share</a>
+      <a data-url="http://www.ieake.com/2015/05/11/NSString/" data-id="ci9ihhrkh0000w9fnyn4d5pcw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -234,7 +243,7 @@ range<span class="variable">.length</span> = <span class="number">3</span>;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.ieake.com/2015/05/08/NSNumber/" data-id="ci9ijem7000006hfnbpbhp4t8" class="article-share-link">Share</a>
+      <a data-url="http://www.ieake.com/2015/05/08/NSNumber/" data-id="ci9flhq1y0000mgfnzcokwc8d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -279,7 +288,7 @@ range<span class="variable">.length</span> = <span class="number">3</span>;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.ieake.com/2015/04/08/hello-world/" data-id="ci9ijem8i00046hfnkx6n15qu" class="article-share-link">Share</a>
+      <a data-url="http://www.ieake.com/2015/04/08/hello-world/" data-id="ci90z4bp90000k2vmjlz0pwvc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -320,7 +329,7 @@ range<span class="variable">.length</span> = <span class="number">3</span>;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.ieake.com/2015/04/08/新的开始/" data-id="ci9ijem8e00016hfnra311o2m" class="article-share-link">Share</a>
+      <a data-url="http://www.ieake.com/2015/04/08/新的开始/" data-id="ci90z4bq80001k2vmbwjzn8d9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -365,7 +374,7 @@ range<span class="variable">.length</span> = <span class="number">3</span>;
       <ul>
         
           <li>
-            <a href="/2015/05/10/NSString/">NSString</a>
+            <a href="/2015/05/11/NSString/">NSString</a>
           </li>
         
           <li>
