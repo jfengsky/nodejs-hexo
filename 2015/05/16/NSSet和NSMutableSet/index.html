@@ -11,7 +11,7 @@ NSSet *set2 = [[NSSet alloc] initWithObjects:@&quot;2&quot;,@&quot;3&quot;,@&quo
 NSArray *array1 = [NSArray arrayWithObjects:@&quot;7&quot;,@&quot;8&quot;, @&quot;10&quot;,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NSSet和NSMutableSet">
-<meta property="og:url" content="http://www.ieake.com/2015/05/15/NSSet和NSMutableSet/index.html">
+<meta property="og:url" content="http://www.ieake.com/2015/05/16/NSSet和NSMutableSet/index.html">
 <meta property="og:site_name" content="枫之舞">
 <meta property="og:description" content="NSSet// 集合的创建
 NSSet *set1 = [NSSet setWithObjects:@&quot;1&quot;,@&quot;2&quot;, nil];
@@ -75,8 +75,8 @@ NSArray *array1 = [NSArray arrayWithObjects:@&quot;7&quot;,@&quot;8&quot;, @&quo
         <section id="main">
         <article id="post-NSSet和NSMutableSet" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/05/15/NSSet和NSMutableSet/" class="article-date">
-  <time datetime="2015-05-15T14:03:04.000Z" itemprop="datePublished">2015-05-15</time>
+    <a href="/2015/05/16/NSSet和NSMutableSet/" class="article-date">
+  <time datetime="2015-05-16T13:26:21.000Z" itemprop="datePublished">2015-05-16</time>
 </a>
     
   </div>
@@ -144,11 +144,27 @@ NSArray *array1 = [NSArray arrayWithObjects:@&quot;7&quot;,@&quot;8&quot;, @&quo
 
 <span class="built_in">NSSet</span> *appSet3 = [set5 setByAddingObjectsFromArray:array1];
 <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, appSet3);
+</code></pre><h3 id="NSMutableSet">NSMutableSet</h3><pre><code>NSMutableSet *<span class="built_in">set</span>6 = [NSMutableSet <span class="built_in">set</span>WithObjects:@<span class="string">"1"</span>, @<span class="string">"2"</span>, @<span class="string">"a"</span> , nil];
+NSMutableSet *<span class="built_in">set</span>7 = [NSMutableSet <span class="built_in">set</span>WithObjects:@<span class="string">"1"</span>, @<span class="string">"3"</span>, @<span class="string">"a"</span> , nil];
+
+// 减去相同的元素
+ [<span class="built_in">set</span>6 minusSet:<span class="built_in">set</span>7];
+
+// 取得两个集合的交集
+ [<span class="built_in">set</span>6 intersectSet:<span class="built_in">set</span>7];
+
+// 两个集合的并集
+ [<span class="built_in">set</span>6 unionSet:<span class="built_in">set</span>7];
+
+// 删除指定的对象
+[<span class="built_in">set</span>6 removeObject:@<span class="string">"2"</span>];
+
+NSLog(@<span class="string">"set6: %@"</span>, <span class="built_in">set</span>6);
 </code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.ieake.com/2015/05/15/NSSet和NSMutableSet/" data-id="ci9r222ac0006hvfn4pxfkr7n" class="article-share-link">Share</a>
+      <a data-url="http://www.ieake.com/2015/05/16/NSSet和NSMutableSet/" data-id="ci9r2ic910006l3fnhx2i78pe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -215,7 +231,7 @@ NSArray *array1 = [NSArray arrayWithObjects:@&quot;7&quot;,@&quot;8&quot;, @&quo
       <ul>
         
           <li>
-            <a href="/2015/05/15/NSSet和NSMutableSet/">NSSet和NSMutableSet</a>
+            <a href="/2015/05/16/NSSet和NSMutableSet/">NSSet和NSMutableSet</a>
           </li>
         
           <li>
