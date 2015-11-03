@@ -3,17 +3,50 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2015/4 | 枫之舞</title>
+  <title>swift 二维数组 | 枫之舞</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="www.ieake.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="枫之舞">
-<meta property="og:url" content="http://www.ieake.com/archives/2015/04/index.html">
+  <meta name="description" content="二维数组的声明以及遍历
+// 方法一
+var array1 = [[Int]]() 
+// 方法二
+var array2 = Array&amp;lt;Array&amp;lt;Int&amp;gt;&amp;gt;()
+
+array1 = [[1,2], [3,4]]
+array2 = [[5,6,7],[8,9,0]]
+
+// 遍历
+for(var i = 0; i &amp;lt; 2; i++){
+  for(var j = 0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="swift 二维数组">
+<meta property="og:url" content="http://www.ieake.com/2015/09/24/swift-二维数组/index.html">
 <meta property="og:site_name" content="枫之舞">
-<meta property="og:description" content="www.ieake.com">
+<meta property="og:description" content="二维数组的声明以及遍历
+// 方法一
+var array1 = [[Int]]() 
+// 方法二
+var array2 = Array&amp;lt;Array&amp;lt;Int&amp;gt;&amp;gt;()
+
+array1 = [[1,2], [3,4]]
+array2 = [[5,6,7],[8,9,0]]
+
+// 遍历
+for(var i = 0; i &amp;lt; 2; i++){
+  for(var j = 0">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="枫之舞">
-<meta name="twitter:description" content="www.ieake.com">
+<meta name="twitter:title" content="swift 二维数组">
+<meta name="twitter:description" content="二维数组的声明以及遍历
+// 方法一
+var array1 = [[Int]]() 
+// 方法二
+var array2 = Array&amp;lt;Array&amp;lt;Int&amp;gt;&amp;gt;()
+
+array1 = [[1,2], [3,4]]
+array2 = [[5,6,7],[8,9,0]]
+
+// 遍历
+for(var i = 0; i &amp;lt; 2; i++){
+  for(var j = 0">
   
     <link rel="alternative" href="/atom.xml" title="枫之舞" type="application/atom+xml">
   
@@ -64,39 +97,126 @@
 </header>
       <div class="outer">
         <section id="main">
+        <article id="post-swift-二维数组" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/09/24/swift-二维数组/" class="article-date">
+  <time datetime="2015-09-24T06:52:42.000Z" itemprop="datePublished">2015-09-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
         
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/04/08/新的开始/" class="archive-article-date">
-  <time datetime="2015-04-08T12:14:06.000Z" itemprop="datePublished">4月 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/04/08/新的开始/">新的开始</a>
+    <h1 class="article-title" itemprop="name">
+      swift 二维数组
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>二维数组的声明以及遍历</p>
+<pre><code>// 方法一
+var array1 = <span class="string">[[Int]]</span>() 
+// 方法二
+var array2 = Array&lt;Array&lt;Int&gt;&gt;()
+
+array1 = <span class="string">[[1,2], [3,4]]</span>
+array2 = <span class="string">[[5,6,7],[8,9,0]]</span>
+
+// 遍历
+<span class="keyword">for</span>(var i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++){
+  <span class="keyword">for</span>(var j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++){
+    <span class="built_in">print</span>(array2[i][j])
+  }
+}
+</code></pre><p>另一种二维数组申明方法</p>
+<pre><code><span class="comment">// 苹果官方的教程</span>
+<span class="class"><span class="keyword">struct</span> <span class="title">Matrix</span> </span>{
+  <span class="keyword">let</span> rows: <span class="type">Int</span>, columns: <span class="type">Int</span>
+  <span class="keyword">var</span> grid: [<span class="type">Int</span>]
+  <span class="keyword">init</span>(rows: <span class="type">Int</span>, columns: <span class="type">Int</span>) {
+    <span class="keyword">self</span>.rows = rows
+    <span class="keyword">self</span>.columns = columns
+    grid = <span class="type">Array</span>(<span class="built_in">count</span>: rows * columns, repeatedValue: <span class="number">0</span>)
+  }
+  <span class="func"><span class="keyword">func</span> <span class="title">indexIsValidForRow</span><span class="params">(row: Int, column: Int)</span></span> -&gt; <span class="type">Bool</span> {
+    <span class="keyword">return</span> row &gt;= <span class="number">0</span> &amp;&amp; row &lt; rows &amp;&amp; column &gt;= <span class="number">0</span> &amp;&amp; column &lt; columns
+  }
+  <span class="keyword">subscript</span>(row: <span class="type">Int</span>, column: <span class="type">Int</span>) -&gt; <span class="type">Int</span> {
+    <span class="keyword">get</span> {
+      <span class="built_in">assert</span>(indexIsValidForRow(row, column: column), <span class="string">"Index out of range"</span>)
+      <span class="keyword">return</span> grid[(row * columns) + column]
+    }
+    <span class="keyword">set</span> {
+      <span class="built_in">assert</span>(indexIsValidForRow(row, column: column), <span class="string">"Index out of range"</span>)
+      grid[(row * columns) + column] = newValue
+    }
+  }
+}
+
+<span class="comment">// 初始化</span>
+<span class="keyword">var</span> tempArray = <span class="type">Matrix</span>(rows: <span class="number">2</span>, columns: <span class="number">2</span>)
+tempArray.grid = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]
+
+<span class="comment">// 遍历</span>
+<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++){
+  <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++){
+    <span class="built_in">print</span>(tempArray[i,j])
+  }
+}
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ieake.com/2015/09/24/swift-二维数组/" data-id="cigix7fbb000m9x5hfdfphrgo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二维数组/">二维数组</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/10/02/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello hexo
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/09/21/swift-模糊效果/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">swift 模糊效果</div>
+    </a>
+  
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES * * */
+      var disqus_shortname = 'ieake';
+      
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
 
         </section>
         

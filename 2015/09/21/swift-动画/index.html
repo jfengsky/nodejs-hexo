@@ -3,17 +3,47 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2015/4 | 枫之舞</title>
+  <title>swift 动画 | 枫之舞</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="www.ieake.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="枫之舞">
-<meta property="og:url" content="http://www.ieake.com/archives/2015/04/index.html">
+  <meta name="description" content="动画关键方法 animateWithDurationanimateWithDuration(
+  动画持续时间: Double,
+  动画延迟执行时间: Double,
+  弹性参数: Double,
+  弹性起始值: Double,
+  运动曲线: CurveEaseInOut(平滑),
+  动画执行方法: Func,
+  执行完回调方法: Func
+)
+例子: 缩放运动变色的红球
+let re">
+<meta property="og:type" content="article">
+<meta property="og:title" content="swift 动画">
+<meta property="og:url" content="http://www.ieake.com/2015/09/21/swift-动画/index.html">
 <meta property="og:site_name" content="枫之舞">
-<meta property="og:description" content="www.ieake.com">
+<meta property="og:description" content="动画关键方法 animateWithDurationanimateWithDuration(
+  动画持续时间: Double,
+  动画延迟执行时间: Double,
+  弹性参数: Double,
+  弹性起始值: Double,
+  运动曲线: CurveEaseInOut(平滑),
+  动画执行方法: Func,
+  执行完回调方法: Func
+)
+例子: 缩放运动变色的红球
+let re">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="枫之舞">
-<meta name="twitter:description" content="www.ieake.com">
+<meta name="twitter:title" content="swift 动画">
+<meta name="twitter:description" content="动画关键方法 animateWithDurationanimateWithDuration(
+  动画持续时间: Double,
+  动画延迟执行时间: Double,
+  弹性参数: Double,
+  弹性起始值: Double,
+  运动曲线: CurveEaseInOut(平滑),
+  动画执行方法: Func,
+  执行完回调方法: Func
+)
+例子: 缩放运动变色的红球
+let re">
   
     <link rel="alternative" href="/atom.xml" title="枫之舞" type="application/atom+xml">
   
@@ -64,39 +94,126 @@
 </header>
       <div class="outer">
         <section id="main">
+        <article id="post-swift-动画" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/09/21/swift-动画/" class="article-date">
+  <time datetime="2015-09-21T06:43:50.000Z" itemprop="datePublished">2015-09-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
         
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/04/08/新的开始/" class="archive-article-date">
-  <time datetime="2015-04-08T12:14:06.000Z" itemprop="datePublished">4月 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/04/08/新的开始/">新的开始</a>
+    <h1 class="article-title" itemprop="name">
+      swift 动画
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="动画关键方法_animateWithDuration">动画关键方法 <code>animateWithDuration</code></h3><pre><code>animateWithDuration(
+  动画持续时间: <span class="type">Double</span>,
+  动画延迟执行时间: <span class="type">Double</span>,
+  弹性参数: <span class="type">Double</span>,
+  弹性起始值: <span class="type">Double</span>,
+  运动曲线: CurveEaseInOut(平滑),
+  动画执行方法: Func,
+  执行完回调方法: Func
+)
+</code></pre><p>例子: 缩放运动变色的红球</p>
+<pre><code>let redBall = <span class="built_in">UIView</span>(frame: <span class="built_in">CGRectMake</span>(<span class="number">50</span>, <span class="number">50</span>, <span class="number">100</span>, <span class="number">100</span>))
+redBall<span class="variable">.backgroundColor</span> = <span class="built_in">UIColor</span><span class="variable">.redColor</span>()
+
+<span class="comment">// 设置圆角</span>
+redBall<span class="variable">.layer</span><span class="variable">.cornerRadius</span> = <span class="number">50</span>
+
+<span class="keyword">self</span><span class="variable">.view</span><span class="variable">.addSubview</span>(redBall)
+
+<span class="comment">// 创建缩放动画</span>
+<span class="built_in">UIView</span><span class="variable">.animateWithDuration</span>(
+  <span class="number">0.5</span>, 
+  delay: <span class="number">0</span>,
+  usingSpringWithDamping: <span class="number">0.3</span>,
+  initialSpringVelocity: <span class="number">0.2</span>, 
+  options: <span class="built_in">UIViewAnimationOptions</span><span class="variable">.CurveEaseInOut</span>, 
+  animations: { () -&gt; Void <span class="keyword">in</span>
+
+    <span class="comment">// 只是放大2倍</span>
+    <span class="comment">// redBall.transform = CGAffineTransformMakeScale(2, 2)</span>
+
+    <span class="comment">// 只是位移动画</span>
+    <span class="comment">// redBall.transform = CGAffineTransformMakeTranslation(158, 58)</span>
+
+
+    <span class="comment">// 两个动画组合在一起</span>
+    redBall<span class="variable">.transform</span> = <span class="built_in">CGAffineTransformConcat</span>(
+
+      <span class="comment">// 缩放</span>
+      <span class="built_in">CGAffineTransformMakeScale</span>(<span class="number">2</span>, <span class="number">2</span>), 
+
+      <span class="comment">// 位移</span>
+      <span class="built_in">CGAffineTransformMakeTranslation</span>(<span class="number">158</span>, <span class="number">58</span>)
+    )
+
+    <span class="comment">// 颜色变绿</span>
+    redBall<span class="variable">.backgroundColor</span> = <span class="built_in">UIColor</span><span class="variable">.greenColor</span>()
+
+  }, 
+  completion: <span class="literal">nil</span>
+)
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ieake.com/2015/09/21/swift-动画/" data-id="cigix7fb7000j9x5h1vj9nr5u" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/09/21/swift-模糊效果/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          swift 模糊效果
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/09/09/swift-类/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">swift 类</div>
+    </a>
+  
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES * * */
+      var disqus_shortname = 'ieake';
+      
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
 
         </section>
         
