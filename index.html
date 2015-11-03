@@ -66,6 +66,66 @@
         <section id="main">
         
   
+    <article id="post-swift读json文件和生产json数据格式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/03/swift读json文件和生产json数据格式/" class="article-date">
+  <time datetime="2015-11-03T06:18:12.000Z" itemprop="datePublished">2015-11-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/03/swift读json文件和生产json数据格式/">swift读json文件和生产json数据格式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code><span class="comment">// 读json文件</span>
+<span class="keyword">let</span> filePath: <span class="built_in">String</span> = NSBundle.mainBundle().pathForResource(<span class="string">"pwd"</span>, ofType: <span class="string">"json"</span>)!
+
+<span class="keyword">let</span> tempUrl = NSURL(fileURLWithPath: filePath)
+
+<span class="keyword">let</span> nsData: NSData = NSData(contentsOfURL: tempUrl)!
+
+<span class="keyword">let</span> tempJson: AnyObject? = <span class="keyword">try</span>? NSJSONSerialization.JSONObjectWithData(nsData, options: NSJSONReadingOptions.AllowFragments)
+
+<span class="keyword">var</span> tempName = tempJson?.objectForKey(<span class="string">"name"</span>)
+
+print(tempName!)
+
+
+<span class="comment">// 生成json格式</span>
+<span class="keyword">var</span> writeData = [<span class="string">"name"</span>: <span class="string">"jfeng"</span>, <span class="string">"age"</span>: <span class="number">1</span>]
+
+<span class="keyword">var</span> jsonData = <span class="keyword">try</span>? NSJSONSerialization.dataWithJSONObject(writeData, options: NSJSONWritingOptions())
+
+<span class="keyword">var</span> str = NSString(data: jsonData!, encoding: NSUTF8StringEncoding)
+
+print(str!)
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ieake.com/2015/11/03/swift读json文件和生产json数据格式/" data-id="cigizigvp0007d15ha2304uo0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/json/">json</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-NSArray和NSMutableArray" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/10/02/NSArray和NSMutableArray/" class="article-date">
@@ -181,7 +241,64 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.ieake.com/2015/10/02/NSArray和NSMutableArray/" data-id="cigix7f9d00009x5hkfsecrvq" class="article-share-link">Share</a>
+      <a data-url="http://www.ieake.com/2015/10/02/NSArray和NSMutableArray/" data-id="cigizigu30000d15hejp7r5hi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-NSNumber" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/02/NSNumber/" class="article-date">
+  <time datetime="2015-10-02T13:43:14.000Z" itemprop="datePublished">2015-10-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/02/NSNumber/">NSNumber</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="NSNumber对象的一些方法总结">NSNumber对象的一些方法总结</h3><pre><code><span class="comment">// 创建一个基本的NSNumber对象</span>
+<span class="built_in">NSNumber</span> *numberInt = [<span class="built_in">NSNumber</span> numberWithInt: <span class="number">10</span>];   <span class="comment">// 创建和初始化类方法</span>
+<span class="built_in">NSNumber</span> *numberFloat = [[<span class="built_in">NSNumber</span> alloc] initWithFloat: <span class="number">10.8</span>]; <span class="comment">// 初始化实例方法</span>
+
+<span class="comment">// 还原成基本数据类型</span>
+<span class="keyword">int</span> basicInt = [numberInt intValue];
+<span class="keyword">float</span> baseFloat = [numberFloat floatValue];
+
+<span class="comment">// 比较两个对象是否相等</span>
+<span class="keyword">if</span> ([numberInt isEqualToNumber: numberFloat] == <span class="literal">YES</span>) {
+  <span class="built_in">NSLog</span>(<span class="string">@"相等"</span>);
+} <span class="keyword">else</span> {
+  <span class="built_in">NSLog</span>(<span class="string">@"不等"</span>);
+}
+
+<span class="comment">// 比较两个对象的大小</span>
+<span class="keyword">if</span> ( [numberInt compare:numberFloat] == <span class="built_in">NSOrderedAscending</span>) {  
+  <span class="built_in">NSLog</span>(<span class="string">@"左边的数字小"</span>);  
+} <span class="keyword">else</span> {  
+  <span class="built_in">NSLog</span>(<span class="string">@"左边的数字大"</span>);  
+}
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ieake.com/2015/10/02/NSNumber/" data-id="cigizigx3001ad15hmuvquqq8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -288,64 +405,7 @@ id key = [enumerator nextObject];
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.ieake.com/2015/10/02/NSDictionary和NSMutableDictionary/" data-id="cigix7fcc001a9x5h8b139f3p" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-NSNumber" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/02/NSNumber/" class="article-date">
-  <time datetime="2015-10-02T13:43:14.000Z" itemprop="datePublished">2015-10-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/02/NSNumber/">NSNumber</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="NSNumber对象的一些方法总结">NSNumber对象的一些方法总结</h3><pre><code><span class="comment">// 创建一个基本的NSNumber对象</span>
-<span class="built_in">NSNumber</span> *numberInt = [<span class="built_in">NSNumber</span> numberWithInt: <span class="number">10</span>];   <span class="comment">// 创建和初始化类方法</span>
-<span class="built_in">NSNumber</span> *numberFloat = [[<span class="built_in">NSNumber</span> alloc] initWithFloat: <span class="number">10.8</span>]; <span class="comment">// 初始化实例方法</span>
-
-<span class="comment">// 还原成基本数据类型</span>
-<span class="keyword">int</span> basicInt = [numberInt intValue];
-<span class="keyword">float</span> baseFloat = [numberFloat floatValue];
-
-<span class="comment">// 比较两个对象是否相等</span>
-<span class="keyword">if</span> ([numberInt isEqualToNumber: numberFloat] == <span class="literal">YES</span>) {
-  <span class="built_in">NSLog</span>(<span class="string">@"相等"</span>);
-} <span class="keyword">else</span> {
-  <span class="built_in">NSLog</span>(<span class="string">@"不等"</span>);
-}
-
-<span class="comment">// 比较两个对象的大小</span>
-<span class="keyword">if</span> ( [numberInt compare:numberFloat] == <span class="built_in">NSOrderedAscending</span>) {  
-  <span class="built_in">NSLog</span>(<span class="string">@"左边的数字小"</span>);  
-} <span class="keyword">else</span> {  
-  <span class="built_in">NSLog</span>(<span class="string">@"左边的数字大"</span>);  
-}
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.ieake.com/2015/10/02/NSNumber/" data-id="cigix7fc800199x5h5dmmui4u" class="article-share-link">Share</a>
+      <a data-url="http://www.ieake.com/2015/10/02/NSDictionary和NSMutableDictionary/" data-id="cigizigx6001bd15hriyqkk7f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -446,7 +506,7 @@ NSLog(@<span class="string">"set6: %@"</span>, <span class="built_in">set</span>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.ieake.com/2015/10/02/NSSet和NSMutableSet/" data-id="cigix7fc600189x5hy8q5oge7" class="article-share-link">Share</a>
+      <a data-url="http://www.ieake.com/2015/10/02/NSSet和NSMutableSet/" data-id="cigizigx00019d15hs2eq0g9y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -603,7 +663,7 @@ range<span class="variable">.length</span> = <span class="number">3</span>;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.ieake.com/2015/10/02/NSString/" data-id="cigix7fc500179x5haxhh6lhd" class="article-share-link">Share</a>
+      <a data-url="http://www.ieake.com/2015/10/02/NSString/" data-id="cigizigwy0018d15hmlawv25p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -648,7 +708,7 @@ range<span class="variable">.length</span> = <span class="number">3</span>;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.ieake.com/2015/10/02/hello-world/" data-id="cigix7fc000139x5h4adlnwbe" class="article-share-link">Share</a>
+      <a data-url="http://www.ieake.com/2015/10/02/hello-world/" data-id="cigizigwu0014d15hsbibj0vh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -734,7 +794,7 @@ tempArray.grid = [<span class="number">0</span>,<span class="number">1</span>,<s
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.ieake.com/2015/09/24/swift-二维数组/" data-id="cigix7fbb000m9x5hfdfphrgo" class="article-share-link">Share</a>
+      <a data-url="http://www.ieake.com/2015/09/24/swift-二维数组/" data-id="cigizigw6000nd15hbw9jysja" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二维数组/">二维数组</a></li></ul>
@@ -787,7 +847,7 @@ self<span class="class">.view</span><span class="class">.addSubview</span>(blurV
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.ieake.com/2015/09/21/swift-模糊效果/" data-id="cigix7fb1000d9x5h3m4320st" class="article-share-link">Share</a>
+      <a data-url="http://www.ieake.com/2015/09/21/swift-模糊效果/" data-id="cigizigvx000ed15h5ggp84kf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模糊效果/">模糊效果</a></li></ul>
@@ -875,7 +935,7 @@ redBall<span class="variable">.layer</span><span class="variable">.cornerRadius<
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.ieake.com/2015/09/21/swift-动画/" data-id="cigix7fb7000j9x5h1vj9nr5u" class="article-share-link">Share</a>
+      <a data-url="http://www.ieake.com/2015/09/21/swift-动画/" data-id="cigizigw3000kd15haylzq7wu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li></ul>
@@ -887,95 +947,9 @@ redBall<span class="variable">.layer</span><span class="variable">.cornerRadius<
 
 
   
-    <article id="post-swift-类" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/09/09/swift-类/" class="article-date">
-  <time datetime="2015-09-09T06:33:40.000Z" itemprop="datePublished">2015-09-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/09/swift-类/">swift 类</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code><span class="comment">/**
- 类
- */</span>
-
-<span class="comment">// 定义一个类,与结构体非常相似,只是类没有逐一成员构造器</span>
-<span class="class"><span class="keyword">struct</span> <span class="title">Rect</span> </span>{
-  <span class="keyword">var</span> width: <span class="type">Double</span> = <span class="number">0.0</span>
-  <span class="keyword">var</span> height: <span class="type">Double</span> = <span class="number">0.0</span>
-
-  <span class="comment">// 类的方法</span>
-  <span class="func"><span class="keyword">func</span> <span class="title">getWidth</span><span class="params">()</span></span> -&gt; <span class="type">Double</span>{
-    <span class="keyword">return</span> width
-  }
-
-  <span class="func"><span class="keyword">func</span> <span class="title">show</span><span class="params">()</span></span>{
-    <span class="built_in">println</span>(<span class="string">"width=<span class="subst">\(width)</span>, height=<span class="subst">\(height)</span>"</span>)
-  }
-}
-
-<span class="comment">// 实例化一个类</span>
-<span class="keyword">var</span> rect: <span class="type">Rect</span> = <span class="type">Rect</span>()
-
-<span class="comment">// 访问实例类的变量</span>
-rect.width
-
-<span class="keyword">var</span> rect1: <span class="type">Rect</span> = <span class="type">Rect</span>()
-rect1.width = <span class="number">100</span>
-rect1.height = <span class="number">200</span>
-
-<span class="keyword">var</span> rect2: <span class="type">Rect</span> = <span class="type">Rect</span>()
-rect2.height
-
-<span class="comment">// 调用类的方法</span>
-rect2.getWidth()
-rect2.show()
-
-<span class="comment">// 类整体赋值</span>
-<span class="comment">// rect3与rect2指向同一块内存引用,当其中一个改变一个后,另外一个会改变</span>
-<span class="keyword">var</span> rect3 = rect2
-
-rect2.width = <span class="number">400</span>
-
-<span class="comment">// === !== 恒等运算符,只能用于类的实例判断,判断两个类的实例是否相等</span>
-<span class="keyword">if</span> rect3 === rect2 {
-  <span class="built_in">println</span>(<span class="string">"equal"</span>)
-} <span class="keyword">else</span> {
-  <span class="built_in">println</span>(<span class="string">"not equal"</span>)
-}
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.ieake.com/2015/09/09/swift-类/" data-id="cigix7fax000a9x5h7bk2jmpd" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/类/">类</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -996,7 +970,7 @@ rect2.width = <span class="number">400</span>
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/UILabel/">UILabel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift-Array/">swift Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift-break-continue/">swift, break, continue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift-字典/">swift,字典</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二维数组/">二维数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/元祖类型/">元祖类型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动画/">动画</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可选值/">可选值</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举-enum/">枚举, enum</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模糊效果/">模糊效果</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/类/">类</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/结构体/">结构体</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/UILabel/">UILabel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift-Array/">swift Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift-break-continue/">swift, break, continue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift-字典/">swift,字典</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二维数组/">二维数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/元祖类型/">元祖类型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动画/">动画</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可选值/">可选值</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举-enum/">枚举, enum</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模糊效果/">模糊效果</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/类/">类</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/结构体/">结构体</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1005,7 +979,7 @@ rect2.width = <span class="number">400</span>
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/UILabel/" style="font-size: 10px;">UILabel</a><a href="/tags/swift-Array/" style="font-size: 10px;">swift Array</a><a href="/tags/swift-break-continue/" style="font-size: 10px;">swift, break, continue</a><a href="/tags/swift-字典/" style="font-size: 10px;">swift,字典</a><a href="/tags/二维数组/" style="font-size: 10px;">二维数组</a><a href="/tags/元祖类型/" style="font-size: 10px;">元祖类型</a><a href="/tags/动画/" style="font-size: 10px;">动画</a><a href="/tags/可选值/" style="font-size: 20px;">可选值</a><a href="/tags/枚举-enum/" style="font-size: 10px;">枚举, enum</a><a href="/tags/模糊效果/" style="font-size: 10px;">模糊效果</a><a href="/tags/类/" style="font-size: 10px;">类</a><a href="/tags/结构体/" style="font-size: 10px;">结构体</a>
+      <a href="/tags/UILabel/" style="font-size: 10px;">UILabel</a><a href="/tags/json/" style="font-size: 10px;">json</a><a href="/tags/swift-Array/" style="font-size: 10px;">swift Array</a><a href="/tags/swift-break-continue/" style="font-size: 10px;">swift, break, continue</a><a href="/tags/swift-字典/" style="font-size: 10px;">swift,字典</a><a href="/tags/二维数组/" style="font-size: 10px;">二维数组</a><a href="/tags/元祖类型/" style="font-size: 10px;">元祖类型</a><a href="/tags/动画/" style="font-size: 10px;">动画</a><a href="/tags/可选值/" style="font-size: 20px;">可选值</a><a href="/tags/枚举-enum/" style="font-size: 10px;">枚举, enum</a><a href="/tags/模糊效果/" style="font-size: 10px;">模糊效果</a><a href="/tags/类/" style="font-size: 10px;">类</a><a href="/tags/结构体/" style="font-size: 10px;">结构体</a>
     </div>
   </div>
 
@@ -1014,7 +988,7 @@ rect2.width = <span class="number">400</span>
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1026,11 +1000,11 @@ rect2.width = <span class="number">400</span>
       <ul>
         
           <li>
-            <a href="/2015/10/02/NSArray和NSMutableArray/">NSArray和NSMutableArray</a>
+            <a href="/2015/11/03/swift读json文件和生产json数据格式/">swift读json文件和生产json数据格式</a>
           </li>
         
           <li>
-            <a href="/2015/10/02/NSDictionary和NSMutableDictionary/">NSDictionary和NSMutableDictionary</a>
+            <a href="/2015/10/02/NSArray和NSMutableArray/">NSArray和NSMutableArray</a>
           </li>
         
           <li>
@@ -1038,11 +1012,11 @@ rect2.width = <span class="number">400</span>
           </li>
         
           <li>
-            <a href="/2015/10/02/NSSet和NSMutableSet/">NSSet和NSMutableSet</a>
+            <a href="/2015/10/02/NSDictionary和NSMutableDictionary/">NSDictionary和NSMutableDictionary</a>
           </li>
         
           <li>
-            <a href="/2015/10/02/NSString/">NSString</a>
+            <a href="/2015/10/02/NSSet和NSMutableSet/">NSSet和NSMutableSet</a>
           </li>
         
       </ul>

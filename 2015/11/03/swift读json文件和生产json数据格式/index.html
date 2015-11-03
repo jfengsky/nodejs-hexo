@@ -3,32 +3,38 @@
 <head>
   <meta charset="utf-8">
   
-  <title>swift 模糊效果 | 枫之舞</title>
+  <title>swift读json文件和生产json数据格式 | 枫之舞</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="// 创建一个背景图片在视图上
-let imgView = UIImageView(image: UIImage(named: &quot;test.png&quot;))
-imgView.frame = CGRectMake(0, 0, view.frame.width, view.frame.height)
-self.view.addSubview(imgView)
+  <meta name="description" content="// 读json文件
+let filePath: String = NSBundle.mainBundle().pathForResource(&quot;pwd&quot;, ofType: &quot;json&quot;)!
 
-// 创建模糊效果实例, 除了light,">
+let tempUrl = NSURL(fileURLWithPath: filePath)
+
+let nsData: NSData = NSData(contentsOfURL: tempUrl)!
+
+l">
 <meta property="og:type" content="article">
-<meta property="og:title" content="swift 模糊效果">
-<meta property="og:url" content="http://www.ieake.com/2015/09/21/swift-模糊效果/index.html">
+<meta property="og:title" content="swift读json文件和生产json数据格式">
+<meta property="og:url" content="http://www.ieake.com/2015/11/03/swift读json文件和生产json数据格式/index.html">
 <meta property="og:site_name" content="枫之舞">
-<meta property="og:description" content="// 创建一个背景图片在视图上
-let imgView = UIImageView(image: UIImage(named: &quot;test.png&quot;))
-imgView.frame = CGRectMake(0, 0, view.frame.width, view.frame.height)
-self.view.addSubview(imgView)
+<meta property="og:description" content="// 读json文件
+let filePath: String = NSBundle.mainBundle().pathForResource(&quot;pwd&quot;, ofType: &quot;json&quot;)!
 
-// 创建模糊效果实例, 除了light,">
+let tempUrl = NSURL(fileURLWithPath: filePath)
+
+let nsData: NSData = NSData(contentsOfURL: tempUrl)!
+
+l">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="swift 模糊效果">
-<meta name="twitter:description" content="// 创建一个背景图片在视图上
-let imgView = UIImageView(image: UIImage(named: &quot;test.png&quot;))
-imgView.frame = CGRectMake(0, 0, view.frame.width, view.frame.height)
-self.view.addSubview(imgView)
+<meta name="twitter:title" content="swift读json文件和生产json数据格式">
+<meta name="twitter:description" content="// 读json文件
+let filePath: String = NSBundle.mainBundle().pathForResource(&quot;pwd&quot;, ofType: &quot;json&quot;)!
 
-// 创建模糊效果实例, 除了light,">
+let tempUrl = NSURL(fileURLWithPath: filePath)
+
+let nsData: NSData = NSData(contentsOfURL: tempUrl)!
+
+l">
   
     <link rel="alternative" href="/atom.xml" title="枫之舞" type="application/atom+xml">
   
@@ -79,10 +85,10 @@ self.view.addSubview(imgView)
 </header>
       <div class="outer">
         <section id="main">
-        <article id="post-swift-模糊效果" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-swift读json文件和生产json数据格式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/09/21/swift-模糊效果/" class="article-date">
-  <time datetime="2015-09-21T08:10:10.000Z" itemprop="datePublished">2015-09-21</time>
+    <a href="/2015/11/03/swift读json文件和生产json数据格式/" class="article-date">
+  <time datetime="2015-11-03T06:18:12.000Z" itemprop="datePublished">2015-11-03</time>
 </a>
     
   </div>
@@ -93,7 +99,7 @@ self.view.addSubview(imgView)
         
   
     <h1 class="article-title" itemprop="name">
-      swift 模糊效果
+      swift读json文件和生产json数据格式
     </h1>
   
 
@@ -101,29 +107,36 @@ self.view.addSubview(imgView)
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code><span class="comment">// 创建一个背景图片在视图上</span>
-let imgView = <span class="function"><span class="title">UIImageView</span><span class="params">(image: UIImage(named: <span class="string">"test.png"</span>)</span></span>)
-imgView<span class="class">.frame</span> = <span class="function"><span class="title">CGRectMake</span><span class="params">(<span class="number">0</span>, <span class="number">0</span>, view.frame.width, view.frame.height)</span></span>
-self<span class="class">.view</span><span class="class">.addSubview</span>(imgView)
+        <pre><code><span class="comment">// 读json文件</span>
+<span class="keyword">let</span> filePath: <span class="built_in">String</span> = NSBundle.mainBundle().pathForResource(<span class="string">"pwd"</span>, ofType: <span class="string">"json"</span>)!
 
-<span class="comment">// 创建模糊效果实例, 除了light, 还有其它各种模糊效果</span>
-let blurEffect = <span class="function"><span class="title">UIBlurEffect</span><span class="params">(style: .Light)</span></span>
+<span class="keyword">let</span> tempUrl = NSURL(fileURLWithPath: filePath)
 
-<span class="comment">// 创建模糊视图实例</span>
-let blurView = <span class="function"><span class="title">UIVisualEffectView</span><span class="params">(effect: blurEffect)</span></span>
+<span class="keyword">let</span> nsData: NSData = NSData(contentsOfURL: tempUrl)!
 
-<span class="comment">// 模糊实例位置</span>
-blurView<span class="class">.frame</span><span class="class">.size</span> = <span class="function"><span class="title">CGSize</span><span class="params">(width: view.frame.width, height: view.frame.height)</span></span>
+<span class="keyword">let</span> tempJson: AnyObject? = <span class="keyword">try</span>? NSJSONSerialization.JSONObjectWithData(nsData, options: NSJSONReadingOptions.AllowFragments)
 
-self<span class="class">.view</span><span class="class">.addSubview</span>(blurView)
+<span class="keyword">var</span> tempName = tempJson?.objectForKey(<span class="string">"name"</span>)
+
+print(tempName!)
+
+
+<span class="comment">// 生成json格式</span>
+<span class="keyword">var</span> writeData = [<span class="string">"name"</span>: <span class="string">"jfeng"</span>, <span class="string">"age"</span>: <span class="number">1</span>]
+
+<span class="keyword">var</span> jsonData = <span class="keyword">try</span>? NSJSONSerialization.dataWithJSONObject(writeData, options: NSJSONWritingOptions())
+
+<span class="keyword">var</span> str = NSString(data: jsonData!, encoding: NSUTF8StringEncoding)
+
+print(str!)
 </code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.ieake.com/2015/09/21/swift-模糊效果/" data-id="cigizigvx000ed15h5ggp84kf" class="article-share-link">Share</a>
+      <a data-url="http://www.ieake.com/2015/11/03/swift读json文件和生产json数据格式/" data-id="cigizigvp0007d15ha2304uo0" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模糊效果/">模糊效果</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/json/">json</a></li></ul>
 
     </footer>
   </div>
@@ -131,19 +144,10 @@ self<span class="class">.view</span><span class="class">.addSubview</span>(blurV
     
 <nav id="article-nav">
   
-    <a href="/2015/09/24/swift-二维数组/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          swift 二维数组
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/09/21/swift-动画/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/10/02/NSArray和NSMutableArray/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">swift 动画</div>
+      <div class="article-nav-title">NSArray和NSMutableArray</div>
     </a>
   
   <div id="disqus_thread"></div>
