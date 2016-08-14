@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="可选值," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,55 +84,22 @@
 
 
 
-<meta name="description" content="声明后面加? 
-可选值不能进行强制类型转换,需要解包
-可选值后面加!来进行解包
-
-// 声明一个可选值
-let strA:String? = &amp;quot;test&amp;quot;;
-// 可选值解包
-let strB:String! = strA;
-
-var a:Int;
-// println(a); 报错, a没有初始化值
-
-var age:Int?;
-println(age); // -&amp;gt;">
+<meta name="description" content="NSArray的一些方法总结// 数组的创建
+NSArray *array1 = [NSArray arrayWithObject:@&amp;quot;one&amp;quot;];
+NSArray *array2 = [NSArray arrayWithObjects:@&amp;quot;one&amp;quot;, @&amp;quot;two&amp;quot;, @&amp;quot;three&amp;quot;, @&amp;quot;four&amp;quo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="swift Optionals(可选值)">
-<meta property="og:url" content="http://ieake.com/2015/06/18/swift-Optionals-可选值/index.html">
+<meta property="og:title" content="NSArray和NSMutableArray">
+<meta property="og:url" content="http://ieake.com/2016/08/14/NSArray和NSMutableArray/index.html">
 <meta property="og:site_name" content="枫之舞">
-<meta property="og:description" content="声明后面加? 
-可选值不能进行强制类型转换,需要解包
-可选值后面加!来进行解包
-
-// 声明一个可选值
-let strA:String? = &amp;quot;test&amp;quot;;
-// 可选值解包
-let strB:String! = strA;
-
-var a:Int;
-// println(a); 报错, a没有初始化值
-
-var age:Int?;
-println(age); // -&amp;gt;">
+<meta property="og:description" content="NSArray的一些方法总结// 数组的创建
+NSArray *array1 = [NSArray arrayWithObject:@&amp;quot;one&amp;quot;];
+NSArray *array2 = [NSArray arrayWithObjects:@&amp;quot;one&amp;quot;, @&amp;quot;two&amp;quot;, @&amp;quot;three&amp;quot;, @&amp;quot;four&amp;quo">
 <meta property="og:updated_time" content="2016-08-14T06:30:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="swift Optionals(可选值)">
-<meta name="twitter:description" content="声明后面加? 
-可选值不能进行强制类型转换,需要解包
-可选值后面加!来进行解包
-
-// 声明一个可选值
-let strA:String? = &amp;quot;test&amp;quot;;
-// 可选值解包
-let strB:String! = strA;
-
-var a:Int;
-// println(a); 报错, a没有初始化值
-
-var age:Int?;
-println(age); // -&amp;gt;">
+<meta name="twitter:title" content="NSArray和NSMutableArray">
+<meta name="twitter:description" content="NSArray的一些方法总结// 数组的创建
+NSArray *array1 = [NSArray arrayWithObject:@&amp;quot;one&amp;quot;];
+NSArray *array2 = [NSArray arrayWithObjects:@&amp;quot;one&amp;quot;, @&amp;quot;two&amp;quot;, @&amp;quot;three&amp;quot;, @&amp;quot;four&amp;quo">
 
 
 
@@ -153,9 +120,9 @@ println(age); // -&amp;gt;">
 
 
 
-  <link rel="canonical" href="http://ieake.com/2015/06/18/swift-Optionals-可选值/"/>
+  <link rel="canonical" href="http://ieake.com/2016/08/14/NSArray和NSMutableArray/"/>
 
-  <title> swift Optionals(可选值) | 枫之舞 </title>
+  <title> NSArray和NSMutableArray | 枫之舞 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -285,7 +252,7 @@ println(age); // -&amp;gt;">
             
             
               
-                swift Optionals(可选值)
+                NSArray和NSMutableArray
               
             
           </h1>
@@ -297,8 +264,8 @@ println(age); // -&amp;gt;">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-06-18T14:06:26+08:00" content="2015-06-18">
-              2015-06-18
+            <time itemprop="dateCreated" datetime="2016-08-14T14:30:48+08:00" content="2016-08-14">
+              2016-08-14
             </time>
           </span>
 
@@ -344,34 +311,95 @@ println(age); // -&amp;gt;">
       
 
       
-        <ul>
-<li>声明后面加? </li>
-<li>可选值不能进行强制类型转换,需要解包</li>
-<li>可选值后面加!来进行解包</li>
+        <h3 id="NSArray的一些方法总结"><a href="#NSArray的一些方法总结" class="headerlink" title="NSArray的一些方法总结"></a>NSArray的一些方法总结</h3><pre><code>// 数组的创建
+NSArray *array1 = [NSArray arrayWithObject:@&quot;one&quot;];
+NSArray *array2 = [NSArray arrayWithObjects:@&quot;one&quot;, @&quot;two&quot;, @&quot;three&quot;, @&quot;four&quot;, @&quot;five&quot;,nil];
+NSArray *array3 = [NSArray arrayWithArray:array2];
+NSLog(@&quot;array1 : %@&quot;, array1);
+NSLog(@&quot;array2 : %@&quot;, array2);
+NSLog(@&quot;array3 : %@&quot;, array3);
+NSArray *array4 = [[NSArray alloc] initWithArray:array1];
+
+// 获取数组中元素的个数
+int count = [array2 count];
+NSLog(@&quot;%d&quot;, count);   // =&gt; 5
+
+NSString *string1 = [array2 objectAtIndex:1];
+NSLog(@&quot;%@&quot;, string1);  // =&gt; two
+
+// 追加对象,返回一个新的数组
+NSArray *array5 = [array2 arrayByAddingObject:@&quot;six&quot;];
+NSLog(@&quot;array5 : %@&quot;, array5);
+
+// 用指定的字符串把数组中的元素连接起来
+NSString *string2 = [array5 componentsJoinedByString:@&quot;|&quot;];
+NSLog(@&quot;%@&quot;, string2);
+
+// 判断数组中是否存在一个指定的对象
+BOOL isContain = [array5 containsObject:@&quot;three&quot;];
+NSLog(@&quot;%d&quot;, isContain);
+
+// 根据指定的对象返回索引下标
+NSInteger index = [array5 indexOfObject:@&quot;three&quot;];
+NSLog(@&quot;%d&quot;, index);
+
+// 返回数组中的最后一个元素
+NSString *lastObject = [array5 lastObject];
+NSLog(@&quot;%@&quot;, lastObject);
+</code></pre><h3 id="NSMutableArray的一些方法总结"><a href="#NSMutableArray的一些方法总结" class="headerlink" title="NSMutableArray的一些方法总结"></a>NSMutableArray的一些方法总结</h3><ul>
+<li>NSMutableArray继承自NSArray</li>
 </ul>
-<pre><code>// 声明一个可选值
-let strA:String? = &quot;test&quot;;
-// 可选值解包
-let strB:String! = strA;
+<pre><code>// 可变数组
+NSMutableArray *mArray1 = [NSMutableArray array];
+NSLog(@&quot;%@&quot;, mArray1);
 
-var a:Int;
-// println(a); 报错, a没有初始化值
+// 创建一个有5个元素的可变数组
+NSMutableArray *mArray2 = [NSMutableArray arrayWithCapacity:5];
+NSLog(@&quot;%@&quot;, mArray2);
 
-var age:Int?;
-println(age); // -&gt; nil
-age = 12;
-println(age); // -&gt; Optional(12) 表示可选值12
+NSMutableArray *mArray3 = [NSMutableArray arrayWithObjects:@&quot;one&quot;, @&quot;two&quot;, nil];
+NSLog(@&quot;%@&quot;, mArray3);
 
-if age != nil {
-    println(&quot;you age is \(age)&quot;); // -&gt; you age is Optional(12)
+//添加元素
+[mArray3 addObject:@&quot;three&quot;];
+NSLog(@&quot;%@&quot;, mArray3);
 
-    // 把可选值转化为可定有值(可选值的解包)
-    println(&quot;you age is \(age!)&quot;); // -&gt; you age is 12
+// 插入元素
+[mArray3 insertObject:@&quot;four&quot; atIndex:3];
+NSLog(@&quot;%@&quot;, mArray3);
+
+// 移除最后一个元素
+[mArray3 removeLastObject];
+NSLog(@&quot;%@&quot;, mArray3);
+
+// 移除指定元素
+[mArray3 removeObject:@&quot;two&quot;];
+NSLog(@&quot;%@&quot;, mArray3);
+
+// 根据索引下标删除
+[mArray3 removeObjectAtIndex:1];
+NSLog(@&quot;%@&quot;, mArray3);
+
+[mArray3 addObject:@&quot;six&quot;];
+[mArray3 addObject:@&quot;seven&quot;];
+[mArray3 addObject:@&quot;eight&quot;];
+
+// 根据数组删除
+NSArray *deleteArray = [NSArray arrayWithObjects:@&quot;seven&quot;,@&quot;eight&quot;,nil];
+[mArray3 removeObjectsInArray:deleteArray];
+NSLog(@&quot;%@&quot;, mArray3);
+
+// 替换指定下标的元素
+[mArray3 replaceObjectAtIndex:1 withObject:@&quot;replace&quot;];
+NSLog(@&quot;%@&quot;, mArray3);
+</code></pre><h3 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h3><pre><code>for (NSString *tempString in array5) {
+  NSLog(@&quot;found: %@&quot;, tempString);
 }
 
-
-// String(age); 报错,可选值不能强制进行类型转换
-String(age!); // -&gt;12
+// 当不确定数组的元素的类型时,可以选择用id
+for (id tempString in array5) {
+  NSLog(@&quot;id found: %@&quot;, tempString);
+}
 </code></pre>
       
     </div>
@@ -392,27 +420,21 @@ String(age!); // -&gt;12
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/可选值/" rel="tag">#可选值</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/18/swift-Tuples-元祖-类型/" rel="next" title="swift Tuples(元祖)类型">
-                <i class="fa fa-chevron-left"></i> swift Tuples(元祖)类型
+              <a href="/2016/08/14/NSDictionary和NSMutableDictionary/" rel="next" title="NSDictionary和NSMutableDictionary">
+                <i class="fa fa-chevron-left"></i> NSDictionary和NSMutableDictionary
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/08/11/swift-UILabel/" rel="prev" title="swift UILabel">
-                swift UILabel <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/14/NSString/" rel="prev" title="NSString">
+                NSString <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -527,7 +549,7 @@ String(age!); // -&gt;12
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#NSArray的一些方法总结"><span class="nav-number">1.</span> <span class="nav-text">NSArray的一些方法总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSMutableArray的一些方法总结"><span class="nav-number">2.</span> <span class="nav-text">NSMutableArray的一些方法总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遍历数组"><span class="nav-number">3.</span> <span class="nav-text">遍历数组</span></a></li></ol></div>
             
           </div>
         </section>
