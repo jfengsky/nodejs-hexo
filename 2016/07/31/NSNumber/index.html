@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="元祖类型," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,47 +84,31 @@
 
 
 
-<meta name="description" content="将多个不同的值集合成一个数据
-可以有任意多个值
-不同的值可以是不同的类型
+<meta name="description" content="NSNumber对象的一些方法总结// 创建一个基本的NSNumber对象
+NSNumber *numberInt = [NSNumber numberWithInt: 10];   // 创建和初始化类方法
+NSNumber *numberFloat = [[NSNumber alloc] initWithFloat: 10.8]; // 初始化实例方法
 
-// 声明一个元祖类型
-let tuplesTest:(Bool, Int, String) = (false, 404, &amp;quot;Not Found&amp;quot;);
-
-// 元祖类型示例
-let tuples1 = (false, 404, &amp;quot;Not Found&amp;quot;);
-// key:value形">
+// 还原成基本数据类型
+int ba">
 <meta property="og:type" content="article">
-<meta property="og:title" content="swift Tuples(元祖)类型">
-<meta property="og:url" content="http://ieake.com/2015/06/18/swift-Tuples-元祖-类型/index.html">
+<meta property="og:title" content="NSNumber">
+<meta property="og:url" content="http://ieake.com/2016/07/31/NSNumber/index.html">
 <meta property="og:site_name" content="枫之舞">
-<meta property="og:description" content="将多个不同的值集合成一个数据
-可以有任意多个值
-不同的值可以是不同的类型
+<meta property="og:description" content="NSNumber对象的一些方法总结// 创建一个基本的NSNumber对象
+NSNumber *numberInt = [NSNumber numberWithInt: 10];   // 创建和初始化类方法
+NSNumber *numberFloat = [[NSNumber alloc] initWithFloat: 10.8]; // 初始化实例方法
 
-// 声明一个元祖类型
-let tuplesTest:(Bool, Int, String) = (false, 404, &amp;quot;Not Found&amp;quot;);
-
-// 元祖类型示例
-let tuples1 = (false, 404, &amp;quot;Not Found&amp;quot;);
-// key:value形">
-<<<<<<< HEAD
-<meta property="og:updated_time" content="2016-07-24T07:22:42.000Z">
-=======
-<meta property="og:updated_time" content="2016-07-31T06:36:13.452Z">
->>>>>>> ecdf1c45e7c4d9161b7a9ce2477c719634d22d37
+// 还原成基本数据类型
+int ba">
+<meta property="og:updated_time" content="2016-07-31T06:36:13.382Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="swift Tuples(元祖)类型">
-<meta name="twitter:description" content="将多个不同的值集合成一个数据
-可以有任意多个值
-不同的值可以是不同的类型
+<meta name="twitter:title" content="NSNumber">
+<meta name="twitter:description" content="NSNumber对象的一些方法总结// 创建一个基本的NSNumber对象
+NSNumber *numberInt = [NSNumber numberWithInt: 10];   // 创建和初始化类方法
+NSNumber *numberFloat = [[NSNumber alloc] initWithFloat: 10.8]; // 初始化实例方法
 
-// 声明一个元祖类型
-let tuplesTest:(Bool, Int, String) = (false, 404, &amp;quot;Not Found&amp;quot;);
-
-// 元祖类型示例
-let tuples1 = (false, 404, &amp;quot;Not Found&amp;quot;);
-// key:value形">
+// 还原成基本数据类型
+int ba">
 
 
 
@@ -145,9 +129,9 @@ let tuples1 = (false, 404, &amp;quot;Not Found&amp;quot;);
 
 
 
-  <link rel="canonical" href="http://ieake.com/2015/06/18/swift-Tuples-元祖-类型/"/>
+  <link rel="canonical" href="http://ieake.com/2016/07/31/NSNumber/"/>
 
-  <title> swift Tuples(元祖)类型 | 枫之舞 </title>
+  <title> NSNumber | 枫之舞 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -277,7 +261,7 @@ let tuples1 = (false, 404, &amp;quot;Not Found&amp;quot;);
             
             
               
-                swift Tuples(元祖)类型
+                NSNumber
               
             
           </h1>
@@ -289,8 +273,8 @@ let tuples1 = (false, 404, &amp;quot;Not Found&amp;quot;);
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-06-18T13:33:12+08:00" content="2015-06-18">
-              2015-06-18
+            <time itemprop="dateCreated" datetime="2016-07-31T14:36:13+08:00" content="2016-07-31">
+              2016-07-31
             </time>
           </span>
 
@@ -336,41 +320,27 @@ let tuples1 = (false, 404, &amp;quot;Not Found&amp;quot;);
       
 
       
-        <ul>
-<li>将多个不同的值集合成一个数据</li>
-<li>可以有任意多个值</li>
-<li>不同的值可以是不同的类型</li>
-</ul>
-<pre><code>// 声明一个元祖类型
-let tuplesTest:(Bool, Int, String) = (false, 404, &quot;Not Found&quot;);
+        <h3 id="NSNumber对象的一些方法总结"><a href="#NSNumber对象的一些方法总结" class="headerlink" title="NSNumber对象的一些方法总结"></a>NSNumber对象的一些方法总结</h3><pre><code>// 创建一个基本的NSNumber对象
+NSNumber *numberInt = [NSNumber numberWithInt: 10];   // 创建和初始化类方法
+NSNumber *numberFloat = [[NSNumber alloc] initWithFloat: 10.8]; // 初始化实例方法
 
-// 元祖类型示例
-let tuples1 = (false, 404, &quot;Not Found&quot;);
-// key:value形式
-let tuples2 = (isSuccess: false, errorCode: 404, errorMessage: &quot;Not Found&quot;);
+// 还原成基本数据类型
+int basicInt = [numberInt intValue];
+float baseFloat = [numberFloat floatValue];
 
-/* 
- * 访问元祖中的数据
-*/
-// 1.通过定义常量访问
-let (isSuccess, errorCode, errorMessage) = tuples1;
-println(isSuccess); // -&gt; false
-println(errorCode); // -&gt; 404
-println(errorMessage); // -&gt; &quot;Not Found&quot;
+// 比较两个对象是否相等
+if ([numberInt isEqualToNumber: numberFloat] == YES) {
+  NSLog(@&quot;相等&quot;);
+} else {
+  NSLog(@&quot;不等&quot;);
+}
 
-// 2.直接通过下标访问
-println(tuples1.0); // -&gt; false
-println(tuples1.1); // -&gt; 404
-println(tuples1.2); // -&gt; &quot;Not Found&quot;
-
-// 3.通过key来访问
-println(tuples2.isSuccess); // -&gt; false
-println(tuples2.errorCode); // -&gt; 404
-println(tuples2.errorMessage); // -&gt; &quot;Not Found&quot;
-
-// 使用下划线 _ 忽略部分数值
-let (_, _, errorMessage2) = tuples1;
-println(errorMessage2); // -&gt; &quot;Not Found&quot;
+// 比较两个对象的大小
+if ( [numberInt compare:numberFloat] == NSOrderedAscending) {  
+  NSLog(@&quot;左边的数字小&quot;);  
+} else {  
+  NSLog(@&quot;左边的数字大&quot;);  
+}
 </code></pre>
       
     </div>
@@ -391,27 +361,21 @@ println(errorMessage2); // -&gt; &quot;Not Found&quot;
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/元祖类型/" rel="tag">#元祖类型</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/04/08/新的开始/" rel="next" title="新的开始">
-                <i class="fa fa-chevron-left"></i> 新的开始
+              <a href="/2016/07/31/NSDictionary和NSMutableDictionary/" rel="next" title="NSDictionary和NSMutableDictionary">
+                <i class="fa fa-chevron-left"></i> NSDictionary和NSMutableDictionary
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/18/swift-Optionals-可选值/" rel="prev" title="swift Optionals(可选值)">
-                swift Optionals(可选值) <i class="fa fa-chevron-right"></i>
+              <a href="/2016/07/31/NSSet和NSMutableSet/" rel="prev" title="NSSet和NSMutableSet">
+                NSSet和NSMutableSet <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -480,11 +444,7 @@ println(errorMessage2); // -&gt; &quot;Not Found&quot;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-<<<<<<< HEAD
-              <span class="site-state-item-count">22</span>
-=======
               <span class="site-state-item-count">21</span>
->>>>>>> ecdf1c45e7c4d9161b7a9ce2477c719634d22d37
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -501,11 +461,7 @@ println(errorMessage2); // -&gt; &quot;Not Found&quot;
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-<<<<<<< HEAD
-                <span class="site-state-item-count">14</span>
-=======
                 <span class="site-state-item-count">16</span>
->>>>>>> ecdf1c45e7c4d9161b7a9ce2477c719634d22d37
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -534,7 +490,7 @@ println(errorMessage2); // -&gt; &quot;Not Found&quot;
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#NSNumber对象的一些方法总结"><span class="nav-number">1.</span> <span class="nav-text">NSNumber对象的一些方法总结</span></a></li></ol></div>
             
           </div>
         </section>

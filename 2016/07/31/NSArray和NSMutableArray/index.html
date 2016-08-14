@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="元祖类型," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,47 +84,22 @@
 
 
 
-<meta name="description" content="将多个不同的值集合成一个数据
-可以有任意多个值
-不同的值可以是不同的类型
-
-// 声明一个元祖类型
-let tuplesTest:(Bool, Int, String) = (false, 404, &amp;quot;Not Found&amp;quot;);
-
-// 元祖类型示例
-let tuples1 = (false, 404, &amp;quot;Not Found&amp;quot;);
-// key:value形">
+<meta name="description" content="NSArray的一些方法总结// 数组的创建
+NSArray *array1 = [NSArray arrayWithObject:@&amp;quot;one&amp;quot;];
+NSArray *array2 = [NSArray arrayWithObjects:@&amp;quot;one&amp;quot;, @&amp;quot;two&amp;quot;, @&amp;quot;three&amp;quot;, @&amp;quot;four&amp;quo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="swift Tuples(元祖)类型">
-<meta property="og:url" content="http://ieake.com/2015/06/18/swift-Tuples-元祖-类型/index.html">
+<meta property="og:title" content="NSArray和NSMutableArray">
+<meta property="og:url" content="http://ieake.com/2016/07/31/NSArray和NSMutableArray/index.html">
 <meta property="og:site_name" content="枫之舞">
-<meta property="og:description" content="将多个不同的值集合成一个数据
-可以有任意多个值
-不同的值可以是不同的类型
-
-// 声明一个元祖类型
-let tuplesTest:(Bool, Int, String) = (false, 404, &amp;quot;Not Found&amp;quot;);
-
-// 元祖类型示例
-let tuples1 = (false, 404, &amp;quot;Not Found&amp;quot;);
-// key:value形">
-<<<<<<< HEAD
-<meta property="og:updated_time" content="2016-07-24T07:22:42.000Z">
-=======
-<meta property="og:updated_time" content="2016-07-31T06:36:13.452Z">
->>>>>>> ecdf1c45e7c4d9161b7a9ce2477c719634d22d37
+<meta property="og:description" content="NSArray的一些方法总结// 数组的创建
+NSArray *array1 = [NSArray arrayWithObject:@&amp;quot;one&amp;quot;];
+NSArray *array2 = [NSArray arrayWithObjects:@&amp;quot;one&amp;quot;, @&amp;quot;two&amp;quot;, @&amp;quot;three&amp;quot;, @&amp;quot;four&amp;quo">
+<meta property="og:updated_time" content="2016-07-31T06:36:13.374Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="swift Tuples(元祖)类型">
-<meta name="twitter:description" content="将多个不同的值集合成一个数据
-可以有任意多个值
-不同的值可以是不同的类型
-
-// 声明一个元祖类型
-let tuplesTest:(Bool, Int, String) = (false, 404, &amp;quot;Not Found&amp;quot;);
-
-// 元祖类型示例
-let tuples1 = (false, 404, &amp;quot;Not Found&amp;quot;);
-// key:value形">
+<meta name="twitter:title" content="NSArray和NSMutableArray">
+<meta name="twitter:description" content="NSArray的一些方法总结// 数组的创建
+NSArray *array1 = [NSArray arrayWithObject:@&amp;quot;one&amp;quot;];
+NSArray *array2 = [NSArray arrayWithObjects:@&amp;quot;one&amp;quot;, @&amp;quot;two&amp;quot;, @&amp;quot;three&amp;quot;, @&amp;quot;four&amp;quo">
 
 
 
@@ -145,9 +120,9 @@ let tuples1 = (false, 404, &amp;quot;Not Found&amp;quot;);
 
 
 
-  <link rel="canonical" href="http://ieake.com/2015/06/18/swift-Tuples-元祖-类型/"/>
+  <link rel="canonical" href="http://ieake.com/2016/07/31/NSArray和NSMutableArray/"/>
 
-  <title> swift Tuples(元祖)类型 | 枫之舞 </title>
+  <title> NSArray和NSMutableArray | 枫之舞 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -277,7 +252,7 @@ let tuples1 = (false, 404, &amp;quot;Not Found&amp;quot;);
             
             
               
-                swift Tuples(元祖)类型
+                NSArray和NSMutableArray
               
             
           </h1>
@@ -289,8 +264,8 @@ let tuples1 = (false, 404, &amp;quot;Not Found&amp;quot;);
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-06-18T13:33:12+08:00" content="2015-06-18">
-              2015-06-18
+            <time itemprop="dateCreated" datetime="2016-07-31T14:36:13+08:00" content="2016-07-31">
+              2016-07-31
             </time>
           </span>
 
@@ -336,41 +311,95 @@ let tuples1 = (false, 404, &amp;quot;Not Found&amp;quot;);
       
 
       
-        <ul>
-<li>将多个不同的值集合成一个数据</li>
-<li>可以有任意多个值</li>
-<li>不同的值可以是不同的类型</li>
+        <h3 id="NSArray的一些方法总结"><a href="#NSArray的一些方法总结" class="headerlink" title="NSArray的一些方法总结"></a>NSArray的一些方法总结</h3><pre><code>// 数组的创建
+NSArray *array1 = [NSArray arrayWithObject:@&quot;one&quot;];
+NSArray *array2 = [NSArray arrayWithObjects:@&quot;one&quot;, @&quot;two&quot;, @&quot;three&quot;, @&quot;four&quot;, @&quot;five&quot;,nil];
+NSArray *array3 = [NSArray arrayWithArray:array2];
+NSLog(@&quot;array1 : %@&quot;, array1);
+NSLog(@&quot;array2 : %@&quot;, array2);
+NSLog(@&quot;array3 : %@&quot;, array3);
+NSArray *array4 = [[NSArray alloc] initWithArray:array1];
+
+// 获取数组中元素的个数
+int count = [array2 count];
+NSLog(@&quot;%d&quot;, count);   // =&gt; 5
+
+NSString *string1 = [array2 objectAtIndex:1];
+NSLog(@&quot;%@&quot;, string1);  // =&gt; two
+
+// 追加对象,返回一个新的数组
+NSArray *array5 = [array2 arrayByAddingObject:@&quot;six&quot;];
+NSLog(@&quot;array5 : %@&quot;, array5);
+
+// 用指定的字符串把数组中的元素连接起来
+NSString *string2 = [array5 componentsJoinedByString:@&quot;|&quot;];
+NSLog(@&quot;%@&quot;, string2);
+
+// 判断数组中是否存在一个指定的对象
+BOOL isContain = [array5 containsObject:@&quot;three&quot;];
+NSLog(@&quot;%d&quot;, isContain);
+
+// 根据指定的对象返回索引下标
+NSInteger index = [array5 indexOfObject:@&quot;three&quot;];
+NSLog(@&quot;%d&quot;, index);
+
+// 返回数组中的最后一个元素
+NSString *lastObject = [array5 lastObject];
+NSLog(@&quot;%@&quot;, lastObject);
+</code></pre><h3 id="NSMutableArray的一些方法总结"><a href="#NSMutableArray的一些方法总结" class="headerlink" title="NSMutableArray的一些方法总结"></a>NSMutableArray的一些方法总结</h3><ul>
+<li>NSMutableArray继承自NSArray</li>
 </ul>
-<pre><code>// 声明一个元祖类型
-let tuplesTest:(Bool, Int, String) = (false, 404, &quot;Not Found&quot;);
+<pre><code>// 可变数组
+NSMutableArray *mArray1 = [NSMutableArray array];
+NSLog(@&quot;%@&quot;, mArray1);
 
-// 元祖类型示例
-let tuples1 = (false, 404, &quot;Not Found&quot;);
-// key:value形式
-let tuples2 = (isSuccess: false, errorCode: 404, errorMessage: &quot;Not Found&quot;);
+// 创建一个有5个元素的可变数组
+NSMutableArray *mArray2 = [NSMutableArray arrayWithCapacity:5];
+NSLog(@&quot;%@&quot;, mArray2);
 
-/* 
- * 访问元祖中的数据
-*/
-// 1.通过定义常量访问
-let (isSuccess, errorCode, errorMessage) = tuples1;
-println(isSuccess); // -&gt; false
-println(errorCode); // -&gt; 404
-println(errorMessage); // -&gt; &quot;Not Found&quot;
+NSMutableArray *mArray3 = [NSMutableArray arrayWithObjects:@&quot;one&quot;, @&quot;two&quot;, nil];
+NSLog(@&quot;%@&quot;, mArray3);
 
-// 2.直接通过下标访问
-println(tuples1.0); // -&gt; false
-println(tuples1.1); // -&gt; 404
-println(tuples1.2); // -&gt; &quot;Not Found&quot;
+//添加元素
+[mArray3 addObject:@&quot;three&quot;];
+NSLog(@&quot;%@&quot;, mArray3);
 
-// 3.通过key来访问
-println(tuples2.isSuccess); // -&gt; false
-println(tuples2.errorCode); // -&gt; 404
-println(tuples2.errorMessage); // -&gt; &quot;Not Found&quot;
+// 插入元素
+[mArray3 insertObject:@&quot;four&quot; atIndex:3];
+NSLog(@&quot;%@&quot;, mArray3);
 
-// 使用下划线 _ 忽略部分数值
-let (_, _, errorMessage2) = tuples1;
-println(errorMessage2); // -&gt; &quot;Not Found&quot;
+// 移除最后一个元素
+[mArray3 removeLastObject];
+NSLog(@&quot;%@&quot;, mArray3);
+
+// 移除指定元素
+[mArray3 removeObject:@&quot;two&quot;];
+NSLog(@&quot;%@&quot;, mArray3);
+
+// 根据索引下标删除
+[mArray3 removeObjectAtIndex:1];
+NSLog(@&quot;%@&quot;, mArray3);
+
+[mArray3 addObject:@&quot;six&quot;];
+[mArray3 addObject:@&quot;seven&quot;];
+[mArray3 addObject:@&quot;eight&quot;];
+
+// 根据数组删除
+NSArray *deleteArray = [NSArray arrayWithObjects:@&quot;seven&quot;,@&quot;eight&quot;,nil];
+[mArray3 removeObjectsInArray:deleteArray];
+NSLog(@&quot;%@&quot;, mArray3);
+
+// 替换指定下标的元素
+[mArray3 replaceObjectAtIndex:1 withObject:@&quot;replace&quot;];
+NSLog(@&quot;%@&quot;, mArray3);
+</code></pre><h3 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h3><pre><code>for (NSString *tempString in array5) {
+  NSLog(@&quot;found: %@&quot;, tempString);
+}
+
+// 当不确定数组的元素的类型时,可以选择用id
+for (id tempString in array5) {
+  NSLog(@&quot;id found: %@&quot;, tempString);
+}
 </code></pre>
       
     </div>
@@ -391,27 +420,21 @@ println(errorMessage2); // -&gt; &quot;Not Found&quot;
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/元祖类型/" rel="tag">#元祖类型</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/04/08/新的开始/" rel="next" title="新的开始">
-                <i class="fa fa-chevron-left"></i> 新的开始
+              <a href="/2015/09/24/swift-二维数组/" rel="next" title="swift 二维数组">
+                <i class="fa fa-chevron-left"></i> swift 二维数组
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/18/swift-Optionals-可选值/" rel="prev" title="swift Optionals(可选值)">
-                swift Optionals(可选值) <i class="fa fa-chevron-right"></i>
+              <a href="/2016/07/31/NSDictionary和NSMutableDictionary/" rel="prev" title="NSDictionary和NSMutableDictionary">
+                NSDictionary和NSMutableDictionary <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -480,11 +503,7 @@ println(errorMessage2); // -&gt; &quot;Not Found&quot;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-<<<<<<< HEAD
-              <span class="site-state-item-count">22</span>
-=======
               <span class="site-state-item-count">21</span>
->>>>>>> ecdf1c45e7c4d9161b7a9ce2477c719634d22d37
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -501,11 +520,7 @@ println(errorMessage2); // -&gt; &quot;Not Found&quot;
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-<<<<<<< HEAD
-                <span class="site-state-item-count">14</span>
-=======
                 <span class="site-state-item-count">16</span>
->>>>>>> ecdf1c45e7c4d9161b7a9ce2477c719634d22d37
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -534,7 +549,7 @@ println(errorMessage2); // -&gt; &quot;Not Found&quot;
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#NSArray的一些方法总结"><span class="nav-number">1.</span> <span class="nav-text">NSArray的一些方法总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSMutableArray的一些方法总结"><span class="nav-number">2.</span> <span class="nav-text">NSMutableArray的一些方法总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遍历数组"><span class="nav-number">3.</span> <span class="nav-text">遍历数组</span></a></li></ol></div>
             
           </div>
         </section>
