@@ -248,6 +248,222 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/14/Backbone-view/" itemprop="url">
+                  Backbone View
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-14T15:23:04+08:00" content="2016-08-14">
+              2016-08-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="初始化一个View"><a href="#初始化一个View" class="headerlink" title="初始化一个View"></a>初始化一个View</h4><p>这里结合model来初始化一个view</p>
+<pre><code>var student1 = {
+    name: &apos;xiaoming&apos;,
+    age: 12
+}
+var Model = Backbone.Model.extend()
+var studentModel = new Model(student1)
+
+// 创建一个View对象
+var View = Backbone.View.extend()
+
+// 生成一个View实例
+var studentView1 = new View({
+    model: student1
+})
+</code></pre><h4 id="把View写入页面中"><a href="#把View写入页面中" class="headerlink" title="把View写入页面中"></a>把View写入页面中</h4><p>重新修改View对象</p>
+<pre><code>// 创建一个View对象
+var View = Backbone.View.extend({
+    tagName: &apos;p&apos;,
+    className: &apos;item-name&apos;,
+    initialize: function(){
+        this.render().$el.appendTo(&apos;body&apos;)
+    },
+    render: function(){
+        var json = this.model.toJSON();
+        this.$el.html(&apos;&lt;h3&gt;&apos; + json.name + &apos;&lt;/h3&gt;&lt;span&gt;&apos;+ json.age +&apos;&lt;/span&gt;&apos;)
+        return this
+    }
+})
+
+// 生成一个View实例
+new View({
+    model: studentModel
+})
+</code></pre><h4 id="绑定事件，当model改变时重新渲染DOM"><a href="#绑定事件，当model改变时重新渲染DOM" class="headerlink" title="绑定事件，当model改变时重新渲染DOM"></a>绑定事件，当model改变时重新渲染DOM</h4><p>修改View对象，在initialize里用listenTo绑定事件</p>
+<pre><code>var View = Backbone.View.extend({
+    tagName: &apos;p&apos;,
+    className: &apos;item-name&apos;,
+    initialize: function(){
+        this.render().$el.appendTo(&apos;body&apos;)
+
+        // 监听model
+        this.listenTo(this.model, &apos;change&apos;, this.render)
+    },
+    render: function(){
+        var json = this.model.toJSON();
+        this.$el.html(&apos;&lt;h3&gt;&apos; + json.name + &apos;&lt;/h3&gt;&lt;span&gt;&apos;+ json.age +&apos;&lt;/span&gt;&apos;)
+        return this
+    }
+})
+
+// 修改model
+studentModel.set(&apos;name&apos;, &apos;zhangsan&apos;)
+</code></pre><h4 id="给view添加各种事件"><a href="#给view添加各种事件" class="headerlink" title="给view添加各种事件"></a>给view添加各种事件</h4><p>修改View对象，在events里添加各种事件</p>
+<pre><code>var View = Backbone.View.extend({
+    tagName: &apos;p&apos;,
+    className: &apos;item-name&apos;,
+    initialize: function(){
+
+        this.render().$el.appendTo(&apos;body&apos;)
+        this.listenTo(this.model, &apos;change&apos;, this.render)
+    },
+
+    // 这里给view绑定各种事件
+    events: {
+        // 事件名 选择器: 事件字符串
+        &apos;click span&apos;: &apos;handleSpanClick&apos;,
+        &apos;mouseenter&apos;: &apos;handleHover&apos;
+    },
+
+    // 绑定的事件
+    handleSpanClick: function(ev){
+        console.log(ev)
+    },
+    render: function(){
+        var json = this.model.toJSON();
+        this.$el.html(&apos;&lt;h3&gt;&apos; + json.name + &apos;&lt;/h3&gt;&lt;span&gt;&apos;+ json.age +&apos;&lt;/span&gt;&apos;)
+        return this
+    }
+})
+</code></pre><h4 id="修改View先修改Model"><a href="#修改View先修改Model" class="headerlink" title="修改View先修改Model"></a>修改View先修改Model</h4><pre><code>var View = Backbone.View.extend({
+    tagName: &apos;p&apos;,
+    className: &apos;item-name&apos;,
+    initialize: function(){
+        this.render().$el.appendTo(&apos;body&apos;)
+        this.listenTo(this.model, &apos;change&apos;, this.render)
+
+        // 用backbone内置方法remove删除view
+        this.listenTo(this.model, &apos;destroy&apos;, this.remove)
+    },
+    events: {
+        &apos;click span&apos;: &apos;handleSpanClick&apos;
+    },
+    handleSpanClick: function(){
+
+        // 用backbone内置方法destroy删除model
+        this.model.destroy()
+    },
+    render: function(){
+        var json = this.model.toJSON();
+        this.$el.html(&apos;&lt;h3&gt;&apos; + json.name + &apos;&lt;/h3&gt;&lt;span&gt;&apos;+ json.age +&apos;&lt;/span&gt;&apos;)
+        return this
+    }
+})
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/14/hello-world/" itemprop="url">
                   Hello hexo
                 </a>
@@ -262,7 +478,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-14T14:30:48+08:00" content="2016-08-14">
+            <time itemprop="dateCreated" datetime="2016-08-14T15:09:45+08:00" content="2016-08-14">
               2016-08-14
             </time>
           </span>
@@ -350,164 +566,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/14/NSSet和NSMutableSet/" itemprop="url">
-                  NSSet和NSMutableSet
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-14T14:30:48+08:00" content="2016-08-14">
-              2016-08-14
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="NSSet"><a href="#NSSet" class="headerlink" title="NSSet"></a>NSSet</h3><pre><code>// 集合的创建
-NSSet *set1 = [NSSet setWithObjects:@&quot;1&quot;,@&quot;2&quot;, nil];
-NSSet *set2 = [[NSSet alloc] initWithObjects:@&quot;2&quot;,@&quot;3&quot;,@&quot;4&quot;,@&quot;5&quot;, nil];
-NSArray *array1 = [NSArray arrayWithObjects:@&quot;7&quot;,@&quot;8&quot;, @&quot;10&quot;,@&quot;11&quot;, nil];
-NSSet *set3 = [NSSet setWithArray:array1];
-NSSet *set4 = [NSSet setWithSet:set2];
-NSLog(@&quot;set1: %@&quot;, set1);
-NSLog(@&quot;set2: %@&quot;, set2);
-NSLog(@&quot;set3: %@&quot;, set3);
-NSLog(@&quot;set4: %@&quot;, set4);
-
-// 集合中元素的个数
-int count = [set2 count];
-NSLog(@&quot;%d&quot;, count);
-
-// 将集合返回一个数组
-NSArray *objects = [set1 allObjects];
-NSLog(@&quot;objects : %@&quot;, objects);
-
-// 获取集合中任意一个对象
-id object = [set2 anyObject];
-NSLog(@&quot;%@&quot;, object);
-
-// 集合是否包含某个元素
-BOOL isContain = [set2 containsObject:@&quot;3&quot;];
-NSLog(@&quot;%d&quot;, isContain);
-
-// 集合间是否存在交集
-BOOL isIntersect = [set1 intersectsSet:set2];
-NSLog(@&quot;%d&quot;, isIntersect);
-
-// 集合是否另一个集合匹配
-BOOL isEqual = [set1 isEqualToSet:set2];
-NSLog(@&quot;%d&quot;, isEqual);
-
-// 集合是否是另一个集合的子集
-BOOL isSub = [set1 isSubsetOfSet:set2];
-NSLog(@&quot;%d&quot;, isSub);
-
-// 追加新的集合
-NSSet *set5 = [NSSet setWithObjects:@&quot;one&quot;, nil];
-NSSet *appSet1 = [set5 setByAddingObject:@&quot;two&quot;];
-NSLog(@&quot;%@&quot;, appSet1);
-
-NSSet *appSet2 = [set5 setByAddingObjectsFromSet: set1];
-NSLog(@&quot;%@&quot;, appSet2);
-
-NSSet *appSet3 = [set5 setByAddingObjectsFromArray:array1];
-NSLog(@&quot;%@&quot;, appSet3);
-</code></pre><h3 id="NSMutableSet"><a href="#NSMutableSet" class="headerlink" title="NSMutableSet"></a>NSMutableSet</h3><pre><code>NSMutableSet *set6 = [NSMutableSet setWithObjects:@&quot;1&quot;, @&quot;2&quot;, @&quot;a&quot; , nil];
-NSMutableSet *set7 = [NSMutableSet setWithObjects:@&quot;1&quot;, @&quot;3&quot;, @&quot;a&quot; , nil];
-
-// 减去相同的元素
- [set6 minusSet:set7];
-
-// 取得两个集合的交集
- [set6 intersectSet:set7];
-
-// 两个集合的并集
- [set6 unionSet:set7];
-
-// 删除指定的对象
-[set6 removeObject:@&quot;2&quot;];
-
-NSLog(@&quot;set6: %@&quot;, set6);
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/08/14/NSString/" itemprop="url">
                   NSString
                 </a>
@@ -522,7 +580,7 @@ NSLog(@&quot;set6: %@&quot;, set6);
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-14T14:30:48+08:00" content="2016-08-14">
+            <time itemprop="dateCreated" datetime="2016-08-14T15:09:45+08:00" content="2016-08-14">
               2016-08-14
             </time>
           </span>
@@ -741,8 +799,8 @@ NSLog(@&quot;%@&quot;, mutableString1);
             
               
                 
-                <a class="post-title-link" href="/2016/08/14/NSArray和NSMutableArray/" itemprop="url">
-                  NSArray和NSMutableArray
+                <a class="post-title-link" href="/2016/08/14/NSSet和NSMutableSet/" itemprop="url">
+                  NSSet和NSMutableSet
                 </a>
               
             
@@ -755,7 +813,165 @@ NSLog(@&quot;%@&quot;, mutableString1);
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-14T14:30:48+08:00" content="2016-08-14">
+            <time itemprop="dateCreated" datetime="2016-08-14T15:09:45+08:00" content="2016-08-14">
+              2016-08-14
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="NSSet"><a href="#NSSet" class="headerlink" title="NSSet"></a>NSSet</h3><pre><code>// 集合的创建
+NSSet *set1 = [NSSet setWithObjects:@&quot;1&quot;,@&quot;2&quot;, nil];
+NSSet *set2 = [[NSSet alloc] initWithObjects:@&quot;2&quot;,@&quot;3&quot;,@&quot;4&quot;,@&quot;5&quot;, nil];
+NSArray *array1 = [NSArray arrayWithObjects:@&quot;7&quot;,@&quot;8&quot;, @&quot;10&quot;,@&quot;11&quot;, nil];
+NSSet *set3 = [NSSet setWithArray:array1];
+NSSet *set4 = [NSSet setWithSet:set2];
+NSLog(@&quot;set1: %@&quot;, set1);
+NSLog(@&quot;set2: %@&quot;, set2);
+NSLog(@&quot;set3: %@&quot;, set3);
+NSLog(@&quot;set4: %@&quot;, set4);
+
+// 集合中元素的个数
+int count = [set2 count];
+NSLog(@&quot;%d&quot;, count);
+
+// 将集合返回一个数组
+NSArray *objects = [set1 allObjects];
+NSLog(@&quot;objects : %@&quot;, objects);
+
+// 获取集合中任意一个对象
+id object = [set2 anyObject];
+NSLog(@&quot;%@&quot;, object);
+
+// 集合是否包含某个元素
+BOOL isContain = [set2 containsObject:@&quot;3&quot;];
+NSLog(@&quot;%d&quot;, isContain);
+
+// 集合间是否存在交集
+BOOL isIntersect = [set1 intersectsSet:set2];
+NSLog(@&quot;%d&quot;, isIntersect);
+
+// 集合是否另一个集合匹配
+BOOL isEqual = [set1 isEqualToSet:set2];
+NSLog(@&quot;%d&quot;, isEqual);
+
+// 集合是否是另一个集合的子集
+BOOL isSub = [set1 isSubsetOfSet:set2];
+NSLog(@&quot;%d&quot;, isSub);
+
+// 追加新的集合
+NSSet *set5 = [NSSet setWithObjects:@&quot;one&quot;, nil];
+NSSet *appSet1 = [set5 setByAddingObject:@&quot;two&quot;];
+NSLog(@&quot;%@&quot;, appSet1);
+
+NSSet *appSet2 = [set5 setByAddingObjectsFromSet: set1];
+NSLog(@&quot;%@&quot;, appSet2);
+
+NSSet *appSet3 = [set5 setByAddingObjectsFromArray:array1];
+NSLog(@&quot;%@&quot;, appSet3);
+</code></pre><h3 id="NSMutableSet"><a href="#NSMutableSet" class="headerlink" title="NSMutableSet"></a>NSMutableSet</h3><pre><code>NSMutableSet *set6 = [NSMutableSet setWithObjects:@&quot;1&quot;, @&quot;2&quot;, @&quot;a&quot; , nil];
+NSMutableSet *set7 = [NSMutableSet setWithObjects:@&quot;1&quot;, @&quot;3&quot;, @&quot;a&quot; , nil];
+
+// 减去相同的元素
+ [set6 minusSet:set7];
+
+// 取得两个集合的交集
+ [set6 intersectSet:set7];
+
+// 两个集合的并集
+ [set6 unionSet:set7];
+
+// 删除指定的对象
+[set6 removeObject:@&quot;2&quot;];
+
+NSLog(@&quot;set6: %@&quot;, set6);
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/14/NSNumber/" itemprop="url">
+                  NSNumber
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-14T15:09:45+08:00" content="2016-08-14">
               2016-08-14
             </time>
           </span>
@@ -804,94 +1020,26 @@ NSLog(@&quot;%@&quot;, mutableString1);
       
         
           
-            <h3 id="NSArray的一些方法总结"><a href="#NSArray的一些方法总结" class="headerlink" title="NSArray的一些方法总结"></a>NSArray的一些方法总结</h3><pre><code>// 数组的创建
-NSArray *array1 = [NSArray arrayWithObject:@&quot;one&quot;];
-NSArray *array2 = [NSArray arrayWithObjects:@&quot;one&quot;, @&quot;two&quot;, @&quot;three&quot;, @&quot;four&quot;, @&quot;five&quot;,nil];
-NSArray *array3 = [NSArray arrayWithArray:array2];
-NSLog(@&quot;array1 : %@&quot;, array1);
-NSLog(@&quot;array2 : %@&quot;, array2);
-NSLog(@&quot;array3 : %@&quot;, array3);
-NSArray *array4 = [[NSArray alloc] initWithArray:array1];
+            <h3 id="NSNumber对象的一些方法总结"><a href="#NSNumber对象的一些方法总结" class="headerlink" title="NSNumber对象的一些方法总结"></a>NSNumber对象的一些方法总结</h3><pre><code>// 创建一个基本的NSNumber对象
+NSNumber *numberInt = [NSNumber numberWithInt: 10];   // 创建和初始化类方法
+NSNumber *numberFloat = [[NSNumber alloc] initWithFloat: 10.8]; // 初始化实例方法
 
-// 获取数组中元素的个数
-int count = [array2 count];
-NSLog(@&quot;%d&quot;, count);   // =&gt; 5
+// 还原成基本数据类型
+int basicInt = [numberInt intValue];
+float baseFloat = [numberFloat floatValue];
 
-NSString *string1 = [array2 objectAtIndex:1];
-NSLog(@&quot;%@&quot;, string1);  // =&gt; two
-
-// 追加对象,返回一个新的数组
-NSArray *array5 = [array2 arrayByAddingObject:@&quot;six&quot;];
-NSLog(@&quot;array5 : %@&quot;, array5);
-
-// 用指定的字符串把数组中的元素连接起来
-NSString *string2 = [array5 componentsJoinedByString:@&quot;|&quot;];
-NSLog(@&quot;%@&quot;, string2);
-
-// 判断数组中是否存在一个指定的对象
-BOOL isContain = [array5 containsObject:@&quot;three&quot;];
-NSLog(@&quot;%d&quot;, isContain);
-
-// 根据指定的对象返回索引下标
-NSInteger index = [array5 indexOfObject:@&quot;three&quot;];
-NSLog(@&quot;%d&quot;, index);
-
-// 返回数组中的最后一个元素
-NSString *lastObject = [array5 lastObject];
-NSLog(@&quot;%@&quot;, lastObject);
-</code></pre><h3 id="NSMutableArray的一些方法总结"><a href="#NSMutableArray的一些方法总结" class="headerlink" title="NSMutableArray的一些方法总结"></a>NSMutableArray的一些方法总结</h3><ul>
-<li>NSMutableArray继承自NSArray</li>
-</ul>
-<pre><code>// 可变数组
-NSMutableArray *mArray1 = [NSMutableArray array];
-NSLog(@&quot;%@&quot;, mArray1);
-
-// 创建一个有5个元素的可变数组
-NSMutableArray *mArray2 = [NSMutableArray arrayWithCapacity:5];
-NSLog(@&quot;%@&quot;, mArray2);
-
-NSMutableArray *mArray3 = [NSMutableArray arrayWithObjects:@&quot;one&quot;, @&quot;two&quot;, nil];
-NSLog(@&quot;%@&quot;, mArray3);
-
-//添加元素
-[mArray3 addObject:@&quot;three&quot;];
-NSLog(@&quot;%@&quot;, mArray3);
-
-// 插入元素
-[mArray3 insertObject:@&quot;four&quot; atIndex:3];
-NSLog(@&quot;%@&quot;, mArray3);
-
-// 移除最后一个元素
-[mArray3 removeLastObject];
-NSLog(@&quot;%@&quot;, mArray3);
-
-// 移除指定元素
-[mArray3 removeObject:@&quot;two&quot;];
-NSLog(@&quot;%@&quot;, mArray3);
-
-// 根据索引下标删除
-[mArray3 removeObjectAtIndex:1];
-NSLog(@&quot;%@&quot;, mArray3);
-
-[mArray3 addObject:@&quot;six&quot;];
-[mArray3 addObject:@&quot;seven&quot;];
-[mArray3 addObject:@&quot;eight&quot;];
-
-// 根据数组删除
-NSArray *deleteArray = [NSArray arrayWithObjects:@&quot;seven&quot;,@&quot;eight&quot;,nil];
-[mArray3 removeObjectsInArray:deleteArray];
-NSLog(@&quot;%@&quot;, mArray3);
-
-// 替换指定下标的元素
-[mArray3 replaceObjectAtIndex:1 withObject:@&quot;replace&quot;];
-NSLog(@&quot;%@&quot;, mArray3);
-</code></pre><h3 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h3><pre><code>for (NSString *tempString in array5) {
-  NSLog(@&quot;found: %@&quot;, tempString);
+// 比较两个对象是否相等
+if ([numberInt isEqualToNumber: numberFloat] == YES) {
+  NSLog(@&quot;相等&quot;);
+} else {
+  NSLog(@&quot;不等&quot;);
 }
 
-// 当不确定数组的元素的类型时,可以选择用id
-for (id tempString in array5) {
-  NSLog(@&quot;id found: %@&quot;, tempString);
+// 比较两个对象的大小
+if ( [numberInt compare:numberFloat] == NSOrderedAscending) {  
+  NSLog(@&quot;左边的数字小&quot;);  
+} else {  
+  NSLog(@&quot;左边的数字大&quot;);  
 }
 </code></pre>
           
@@ -956,7 +1104,7 @@ for (id tempString in array5) {
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-14T14:30:48+08:00" content="2016-08-14">
+            <time itemprop="dateCreated" datetime="2016-08-14T15:09:45+08:00" content="2016-08-14">
               2016-08-14
             </time>
           </span>
@@ -1125,8 +1273,8 @@ while (key = [enumerator nextObject]) {
             
               
                 
-                <a class="post-title-link" href="/2016/08/14/NSNumber/" itemprop="url">
-                  NSNumber
+                <a class="post-title-link" href="/2016/08/14/NSArray和NSMutableArray/" itemprop="url">
+                  NSArray和NSMutableArray
                 </a>
               
             
@@ -1139,7 +1287,7 @@ while (key = [enumerator nextObject]) {
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-14T14:30:48+08:00" content="2016-08-14">
+            <time itemprop="dateCreated" datetime="2016-08-14T15:09:45+08:00" content="2016-08-14">
               2016-08-14
             </time>
           </span>
@@ -1188,26 +1336,94 @@ while (key = [enumerator nextObject]) {
       
         
           
-            <h3 id="NSNumber对象的一些方法总结"><a href="#NSNumber对象的一些方法总结" class="headerlink" title="NSNumber对象的一些方法总结"></a>NSNumber对象的一些方法总结</h3><pre><code>// 创建一个基本的NSNumber对象
-NSNumber *numberInt = [NSNumber numberWithInt: 10];   // 创建和初始化类方法
-NSNumber *numberFloat = [[NSNumber alloc] initWithFloat: 10.8]; // 初始化实例方法
+            <h3 id="NSArray的一些方法总结"><a href="#NSArray的一些方法总结" class="headerlink" title="NSArray的一些方法总结"></a>NSArray的一些方法总结</h3><pre><code>// 数组的创建
+NSArray *array1 = [NSArray arrayWithObject:@&quot;one&quot;];
+NSArray *array2 = [NSArray arrayWithObjects:@&quot;one&quot;, @&quot;two&quot;, @&quot;three&quot;, @&quot;four&quot;, @&quot;five&quot;,nil];
+NSArray *array3 = [NSArray arrayWithArray:array2];
+NSLog(@&quot;array1 : %@&quot;, array1);
+NSLog(@&quot;array2 : %@&quot;, array2);
+NSLog(@&quot;array3 : %@&quot;, array3);
+NSArray *array4 = [[NSArray alloc] initWithArray:array1];
 
-// 还原成基本数据类型
-int basicInt = [numberInt intValue];
-float baseFloat = [numberFloat floatValue];
+// 获取数组中元素的个数
+int count = [array2 count];
+NSLog(@&quot;%d&quot;, count);   // =&gt; 5
 
-// 比较两个对象是否相等
-if ([numberInt isEqualToNumber: numberFloat] == YES) {
-  NSLog(@&quot;相等&quot;);
-} else {
-  NSLog(@&quot;不等&quot;);
+NSString *string1 = [array2 objectAtIndex:1];
+NSLog(@&quot;%@&quot;, string1);  // =&gt; two
+
+// 追加对象,返回一个新的数组
+NSArray *array5 = [array2 arrayByAddingObject:@&quot;six&quot;];
+NSLog(@&quot;array5 : %@&quot;, array5);
+
+// 用指定的字符串把数组中的元素连接起来
+NSString *string2 = [array5 componentsJoinedByString:@&quot;|&quot;];
+NSLog(@&quot;%@&quot;, string2);
+
+// 判断数组中是否存在一个指定的对象
+BOOL isContain = [array5 containsObject:@&quot;three&quot;];
+NSLog(@&quot;%d&quot;, isContain);
+
+// 根据指定的对象返回索引下标
+NSInteger index = [array5 indexOfObject:@&quot;three&quot;];
+NSLog(@&quot;%d&quot;, index);
+
+// 返回数组中的最后一个元素
+NSString *lastObject = [array5 lastObject];
+NSLog(@&quot;%@&quot;, lastObject);
+</code></pre><h3 id="NSMutableArray的一些方法总结"><a href="#NSMutableArray的一些方法总结" class="headerlink" title="NSMutableArray的一些方法总结"></a>NSMutableArray的一些方法总结</h3><ul>
+<li>NSMutableArray继承自NSArray</li>
+</ul>
+<pre><code>// 可变数组
+NSMutableArray *mArray1 = [NSMutableArray array];
+NSLog(@&quot;%@&quot;, mArray1);
+
+// 创建一个有5个元素的可变数组
+NSMutableArray *mArray2 = [NSMutableArray arrayWithCapacity:5];
+NSLog(@&quot;%@&quot;, mArray2);
+
+NSMutableArray *mArray3 = [NSMutableArray arrayWithObjects:@&quot;one&quot;, @&quot;two&quot;, nil];
+NSLog(@&quot;%@&quot;, mArray3);
+
+//添加元素
+[mArray3 addObject:@&quot;three&quot;];
+NSLog(@&quot;%@&quot;, mArray3);
+
+// 插入元素
+[mArray3 insertObject:@&quot;four&quot; atIndex:3];
+NSLog(@&quot;%@&quot;, mArray3);
+
+// 移除最后一个元素
+[mArray3 removeLastObject];
+NSLog(@&quot;%@&quot;, mArray3);
+
+// 移除指定元素
+[mArray3 removeObject:@&quot;two&quot;];
+NSLog(@&quot;%@&quot;, mArray3);
+
+// 根据索引下标删除
+[mArray3 removeObjectAtIndex:1];
+NSLog(@&quot;%@&quot;, mArray3);
+
+[mArray3 addObject:@&quot;six&quot;];
+[mArray3 addObject:@&quot;seven&quot;];
+[mArray3 addObject:@&quot;eight&quot;];
+
+// 根据数组删除
+NSArray *deleteArray = [NSArray arrayWithObjects:@&quot;seven&quot;,@&quot;eight&quot;,nil];
+[mArray3 removeObjectsInArray:deleteArray];
+NSLog(@&quot;%@&quot;, mArray3);
+
+// 替换指定下标的元素
+[mArray3 replaceObjectAtIndex:1 withObject:@&quot;replace&quot;];
+NSLog(@&quot;%@&quot;, mArray3);
+</code></pre><h3 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h3><pre><code>for (NSString *tempString in array5) {
+  NSLog(@&quot;found: %@&quot;, tempString);
 }
 
-// 比较两个对象的大小
-if ( [numberInt compare:numberFloat] == NSOrderedAscending) {  
-  NSLog(@&quot;左边的数字小&quot;);  
-} else {  
-  NSLog(@&quot;左边的数字大&quot;);  
+// 当不确定数组的元素的类型时,可以选择用id
+for (id tempString in array5) {
+  NSLog(@&quot;id found: %@&quot;, tempString);
 }
 </code></pre>
           
@@ -1957,133 +2173,6 @@ for(var i = 0; i &lt; 2; i++){
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/09/21/swift-模糊效果/" itemprop="url">
-                  swift 模糊效果
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-21T16:10:10+08:00" content="2015-09-21">
-              2015-09-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/swift/" itemprop="url" rel="index">
-                    <span itemprop="name">swift</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <pre><code>// 创建一个背景图片在视图上
-let imgView = UIImageView(image: UIImage(named: &quot;test.png&quot;))
-imgView.frame = CGRectMake(0, 0, view.frame.width, view.frame.height)
-self.view.addSubview(imgView)
-
-// 创建模糊效果实例, 除了light, 还有其它各种模糊效果
-let blurEffect = UIBlurEffect(style: .Light)
-
-// 创建模糊视图实例
-let blurView = UIVisualEffectView(effect: blurEffect)
-
-// 模糊实例位置
-blurView.frame.size = CGSize(width: view.frame.width, height: view.frame.height)
-
-self.view.addSubview(blurView)
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2129,7 +2218,7 @@ self.view.addSubview(blurView)
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

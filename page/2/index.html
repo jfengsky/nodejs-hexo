@@ -248,6 +248,133 @@
             
               
                 
+                <a class="post-title-link" href="/2015/09/21/swift-模糊效果/" itemprop="url">
+                  swift 模糊效果
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-21T16:10:10+08:00" content="2015-09-21">
+              2015-09-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/swift/" itemprop="url" rel="index">
+                    <span itemprop="name">swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>// 创建一个背景图片在视图上
+let imgView = UIImageView(image: UIImage(named: &quot;test.png&quot;))
+imgView.frame = CGRectMake(0, 0, view.frame.width, view.frame.height)
+self.view.addSubview(imgView)
+
+// 创建模糊效果实例, 除了light, 还有其它各种模糊效果
+let blurEffect = UIBlurEffect(style: .Light)
+
+// 创建模糊视图实例
+let blurView = UIVisualEffectView(effect: blurEffect)
+
+// 模糊实例位置
+blurView.frame.size = CGSize(width: view.frame.width, height: view.frame.height)
+
+self.view.addSubview(blurView)
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/09/21/swift-动画/" itemprop="url">
                   swift 动画
                 </a>
@@ -1623,146 +1750,6 @@ self.view.addSubview(textLabel)
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/06/18/swift-Optionals-可选值/" itemprop="url">
-                  swift Optionals(可选值)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-06-18T14:06:26+08:00" content="2015-06-18">
-              2015-06-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/swift/" itemprop="url" rel="index">
-                    <span itemprop="name">swift</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>声明后面加? </li>
-<li>可选值不能进行强制类型转换,需要解包</li>
-<li>可选值后面加!来进行解包</li>
-</ul>
-<pre><code>// 声明一个可选值
-let strA:String? = &quot;test&quot;;
-// 可选值解包
-let strB:String! = strA;
-
-var a:Int;
-// println(a); 报错, a没有初始化值
-
-var age:Int?;
-println(age); // -&gt; nil
-age = 12;
-println(age); // -&gt; Optional(12) 表示可选值12
-
-if age != nil {
-    println(&quot;you age is \(age)&quot;); // -&gt; you age is Optional(12)
-
-    // 把可选值转化为可定有值(可选值的解包)
-    println(&quot;you age is \(age!)&quot;); // -&gt; you age is 12
-}
-
-
-// String(age); 报错,可选值不能强制进行类型转换
-String(age!); // -&gt;12
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1808,7 +1795,7 @@ String(age!); // -&gt;12
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

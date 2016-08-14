@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="backbone," />
 
 
 
@@ -84,15 +84,43 @@
 
 
 
-<meta name="description" content="stay foolish stay hungry">
-<meta property="og:type" content="website">
-<meta property="og:title" content="枫之舞">
-<meta property="og:url" content="http://ieake.com/page/3/index.html">
+<meta name="description" content="初始化一个View这里结合model来初始化一个view
+var student1 = {
+    name: &amp;apos;xiaoming&amp;apos;,
+    age: 12
+}
+var Model = Backbone.Model.extend()
+var studentModel = new Model(student1)
+
+// 创建一个View对象
+var View = Backbon">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Backbone View">
+<meta property="og:url" content="http://ieake.com/2016/08/14/Backbone-view/index.html">
 <meta property="og:site_name" content="枫之舞">
-<meta property="og:description" content="stay foolish stay hungry">
+<meta property="og:description" content="初始化一个View这里结合model来初始化一个view
+var student1 = {
+    name: &amp;apos;xiaoming&amp;apos;,
+    age: 12
+}
+var Model = Backbone.Model.extend()
+var studentModel = new Model(student1)
+
+// 创建一个View对象
+var View = Backbon">
+<meta property="og:updated_time" content="2016-08-14T08:32:10.544Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="枫之舞">
-<meta name="twitter:description" content="stay foolish stay hungry">
+<meta name="twitter:title" content="Backbone View">
+<meta name="twitter:description" content="初始化一个View这里结合model来初始化一个view
+var student1 = {
+    name: &amp;apos;xiaoming&amp;apos;,
+    age: 12
+}
+var Model = Backbone.Model.extend()
+var studentModel = new Model(student1)
+
+// 创建一个View对象
+var View = Backbon">
 
 
 
@@ -113,9 +141,9 @@
 
 
 
-  <link rel="canonical" href="http://ieake.com/page/3/"/>
+  <link rel="canonical" href="http://ieake.com/2016/08/14/Backbone-view/"/>
 
-  <title> 枫之舞 </title>
+  <title> Backbone View | 枫之舞 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,9 +164,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -225,9 +251,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -247,10 +273,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2015/06/18/swift-Optionals-可选值/" itemprop="url">
-                  swift Optionals(可选值)
-                </a>
+                Backbone View
               
             
           </h1>
@@ -262,8 +285,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-06-18T14:06:26+08:00" content="2015-06-18">
-              2015-06-18
+            <time itemprop="dateCreated" datetime="2016-08-14T15:23:04+08:00" content="2016-08-14">
+              2016-08-14
             </time>
           </span>
 
@@ -276,8 +299,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/swift/" itemprop="url" rel="index">
-                    <span itemprop="name">swift</span>
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
                   </a>
                 </span>
 
@@ -309,331 +332,164 @@
       
 
       
-        
-          
-            <ul>
-<li>声明后面加? </li>
-<li>可选值不能进行强制类型转换,需要解包</li>
-<li>可选值后面加!来进行解包</li>
-</ul>
-<pre><code>// 声明一个可选值
-let strA:String? = &quot;test&quot;;
-// 可选值解包
-let strB:String! = strA;
-
-var a:Int;
-// println(a); 报错, a没有初始化值
-
-var age:Int?;
-println(age); // -&gt; nil
-age = 12;
-println(age); // -&gt; Optional(12) 表示可选值12
-
-if age != nil {
-    println(&quot;you age is \(age)&quot;); // -&gt; you age is Optional(12)
-
-    // 把可选值转化为可定有值(可选值的解包)
-    println(&quot;you age is \(age!)&quot;); // -&gt; you age is 12
+        <h4 id="初始化一个View"><a href="#初始化一个View" class="headerlink" title="初始化一个View"></a>初始化一个View</h4><p>这里结合model来初始化一个view</p>
+<pre><code>var student1 = {
+    name: &apos;xiaoming&apos;,
+    age: 12
 }
+var Model = Backbone.Model.extend()
+var studentModel = new Model(student1)
 
+// 创建一个View对象
+var View = Backbone.View.extend()
 
-// String(age); 报错,可选值不能强制进行类型转换
-String(age!); // -&gt;12
+// 生成一个View实例
+var studentView1 = new View({
+    model: student1
+})
+</code></pre><h4 id="把View写入页面中"><a href="#把View写入页面中" class="headerlink" title="把View写入页面中"></a>把View写入页面中</h4><p>重新修改View对象</p>
+<pre><code>// 创建一个View对象
+var View = Backbone.View.extend({
+    tagName: &apos;p&apos;,
+    className: &apos;item-name&apos;,
+    initialize: function(){
+        this.render().$el.appendTo(&apos;body&apos;)
+    },
+    render: function(){
+        var json = this.model.toJSON();
+        this.$el.html(&apos;&lt;h3&gt;&apos; + json.name + &apos;&lt;/h3&gt;&lt;span&gt;&apos;+ json.age +&apos;&lt;/span&gt;&apos;)
+        return this
+    }
+})
+
+// 生成一个View实例
+new View({
+    model: studentModel
+})
+</code></pre><h4 id="绑定事件，当model改变时重新渲染DOM"><a href="#绑定事件，当model改变时重新渲染DOM" class="headerlink" title="绑定事件，当model改变时重新渲染DOM"></a>绑定事件，当model改变时重新渲染DOM</h4><p>修改View对象，在initialize里用listenTo绑定事件</p>
+<pre><code>var View = Backbone.View.extend({
+    tagName: &apos;p&apos;,
+    className: &apos;item-name&apos;,
+    initialize: function(){
+        this.render().$el.appendTo(&apos;body&apos;)
+
+        // 监听model
+        this.listenTo(this.model, &apos;change&apos;, this.render)
+    },
+    render: function(){
+        var json = this.model.toJSON();
+        this.$el.html(&apos;&lt;h3&gt;&apos; + json.name + &apos;&lt;/h3&gt;&lt;span&gt;&apos;+ json.age +&apos;&lt;/span&gt;&apos;)
+        return this
+    }
+})
+
+// 修改model
+studentModel.set(&apos;name&apos;, &apos;zhangsan&apos;)
+</code></pre><h4 id="给view添加各种事件"><a href="#给view添加各种事件" class="headerlink" title="给view添加各种事件"></a>给view添加各种事件</h4><p>修改View对象，在events里添加各种事件</p>
+<pre><code>var View = Backbone.View.extend({
+    tagName: &apos;p&apos;,
+    className: &apos;item-name&apos;,
+    initialize: function(){
+
+        this.render().$el.appendTo(&apos;body&apos;)
+        this.listenTo(this.model, &apos;change&apos;, this.render)
+    },
+
+    // 这里给view绑定各种事件
+    events: {
+        // 事件名 选择器: 事件字符串
+        &apos;click span&apos;: &apos;handleSpanClick&apos;,
+        &apos;mouseenter&apos;: &apos;handleHover&apos;
+    },
+
+    // 绑定的事件
+    handleSpanClick: function(ev){
+        console.log(ev)
+    },
+    render: function(){
+        var json = this.model.toJSON();
+        this.$el.html(&apos;&lt;h3&gt;&apos; + json.name + &apos;&lt;/h3&gt;&lt;span&gt;&apos;+ json.age +&apos;&lt;/span&gt;&apos;)
+        return this
+    }
+})
+</code></pre><h4 id="修改View先修改Model"><a href="#修改View先修改Model" class="headerlink" title="修改View先修改Model"></a>修改View先修改Model</h4><pre><code>var View = Backbone.View.extend({
+    tagName: &apos;p&apos;,
+    className: &apos;item-name&apos;,
+    initialize: function(){
+        this.render().$el.appendTo(&apos;body&apos;)
+        this.listenTo(this.model, &apos;change&apos;, this.render)
+
+        // 用backbone内置方法remove删除view
+        this.listenTo(this.model, &apos;destroy&apos;, this.remove)
+    },
+    events: {
+        &apos;click span&apos;: &apos;handleSpanClick&apos;
+    },
+    handleSpanClick: function(){
+
+        // 用backbone内置方法destroy删除model
+        this.model.destroy()
+    },
+    render: function(){
+        var json = this.model.toJSON();
+        this.$el.html(&apos;&lt;h3&gt;&apos; + json.name + &apos;&lt;/h3&gt;&lt;span&gt;&apos;+ json.age +&apos;&lt;/span&gt;&apos;)
+        return this
+    }
+})
 </code></pre>
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/06/18/swift-Tuples-元祖-类型/" itemprop="url">
-                  swift Tuples(元祖)类型
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-06-18T13:33:12+08:00" content="2015-06-18">
-              2015-06-18
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/swift/" itemprop="url" rel="index">
-                    <span itemprop="name">swift</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/backbone/" rel="tag">#backbone</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <ul>
-<li>将多个不同的值集合成一个数据</li>
-<li>可以有任意多个值</li>
-<li>不同的值可以是不同的类型</li>
-</ul>
-<pre><code>// 声明一个元祖类型
-let tuplesTest:(Bool, Int, String) = (false, 404, &quot;Not Found&quot;);
-
-// 元祖类型示例
-let tuples1 = (false, 404, &quot;Not Found&quot;);
-// key:value形式
-let tuples2 = (isSuccess: false, errorCode: 404, errorMessage: &quot;Not Found&quot;);
-
-/* 
- * 访问元祖中的数据
-*/
-// 1.通过定义常量访问
-let (isSuccess, errorCode, errorMessage) = tuples1;
-println(isSuccess); // -&gt; false
-println(errorCode); // -&gt; 404
-println(errorMessage); // -&gt; &quot;Not Found&quot;
-
-// 2.直接通过下标访问
-println(tuples1.0); // -&gt; false
-println(tuples1.1); // -&gt; 404
-println(tuples1.2); // -&gt; &quot;Not Found&quot;
-
-// 3.通过key来访问
-println(tuples2.isSuccess); // -&gt; false
-println(tuples2.errorCode); // -&gt; 404
-println(tuples2.errorMessage); // -&gt; &quot;Not Found&quot;
-
-// 使用下划线 _ 忽略部分数值
-let (_, _, errorMessage2) = tuples1;
-println(errorMessage2); // -&gt; &quot;Not Found&quot;
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/08/14/hello-world/" rel="next" title="Hello hexo">
+                <i class="fa fa-chevron-left"></i> Hello hexo
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2015/04/08/新的开始/" itemprop="url">
-                  新的开始
-                </a>
-              
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-04-08T20:14:06+08:00" content="2015-04-08">
-              2015-04-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/日志/" itemprop="url" rel="index">
-                    <span itemprop="name">日志</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>利用github新搭的blog,以后就用这个了~~</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -641,6 +497,10 @@ println(errorMessage2); // -&gt; &quot;Not Found&quot;
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -660,8 +520,17 @@ println(errorMessage2); // -&gt; &quot;Not Found&quot;
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -711,6 +580,17 @@ println(errorMessage2); // -&gt; &quot;Not Found&quot;
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化一个View"><span class="nav-number">1.</span> <span class="nav-text">初始化一个View</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#把View写入页面中"><span class="nav-number">2.</span> <span class="nav-text">把View写入页面中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绑定事件，当model改变时重新渲染DOM"><span class="nav-number">3.</span> <span class="nav-text">绑定事件，当model改变时重新渲染DOM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#给view添加各种事件"><span class="nav-number">4.</span> <span class="nav-text">给view添加各种事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改View先修改Model"><span class="nav-number">5.</span> <span class="nav-text">修改View先修改Model</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -814,6 +694,10 @@ println(errorMessage2); // -&gt; &quot;Not Found&quot;
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
