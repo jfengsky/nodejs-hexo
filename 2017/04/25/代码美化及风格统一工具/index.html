@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="nodejs," />
 
 
 
@@ -84,15 +84,17 @@
 
 
 
-<meta name="description" content="stay foolish stay hungry">
-<meta property="og:type" content="website">
-<meta property="og:title" content="枫之舞">
-<meta property="og:url" content="http://ieake.com/tags/UILabel/index.html">
+<meta name="description" content="这里利用了提交代码时，prettier-standard强制格式化代码，来保持代码风格统一 安装插件这里需要安装3个插件  pre-commit 使用commit命令对代码进行格式检查 lint-staged 校验代码，控制代码风格 prettier-standard 对代码进行格式化  npm install pre-commit lint-staged prettier-standard --">
+<meta name="keywords" content="nodejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="代码美化及风格统一工具">
+<meta property="og:url" content="http://ieake.com/2017/04/25/代码美化及风格统一工具/index.html">
 <meta property="og:site_name" content="枫之舞">
-<meta property="og:description" content="stay foolish stay hungry">
+<meta property="og:description" content="这里利用了提交代码时，prettier-standard强制格式化代码，来保持代码风格统一 安装插件这里需要安装3个插件  pre-commit 使用commit命令对代码进行格式检查 lint-staged 校验代码，控制代码风格 prettier-standard 对代码进行格式化  npm install pre-commit lint-staged prettier-standard --">
+<meta property="og:updated_time" content="2017-04-25T03:13:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="枫之舞">
-<meta name="twitter:description" content="stay foolish stay hungry">
+<meta name="twitter:title" content="代码美化及风格统一工具">
+<meta name="twitter:description" content="这里利用了提交代码时，prettier-standard强制格式化代码，来保持代码风格统一 安装插件这里需要安装3个插件  pre-commit 使用commit命令对代码进行格式检查 lint-staged 校验代码，控制代码风格 prettier-standard 对代码进行格式化  npm install pre-commit lint-staged prettier-standard --">
 
 
 
@@ -113,9 +115,9 @@
 
 
 
-  <link rel="canonical" href="http://ieake.com/tags/UILabel/"/>
+  <link rel="canonical" href="http://ieake.com/2017/04/25/代码美化及风格统一工具/"/>
 
-  <title> 标签: UILabel | 枫之舞 </title>
+  <title> 代码美化及风格统一工具 | 枫之舞 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,7 +138,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -224,46 +226,179 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        UILabel
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                代码美化及风格统一工具
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-25T10:57:24+08:00" content="2017-04-25">
+              2017-04-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">nodejs</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>这里利用了提交代码时，prettier-standard强制格式化代码，来保持代码风格统一</p>
+<h5 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h5><p>这里需要安装3个插件</p>
+<ul>
+<li>pre-commit 使用commit命令对代码进行格式检查</li>
+<li>lint-staged 校验代码，控制代码风格</li>
+<li>prettier-standard 对代码进行格式化</li>
+</ul>
+<pre><code>npm install pre-commit lint-staged prettier-standard --save-dev
+</code></pre><h5 id="配置命令"><a href="#配置命令" class="headerlink" title="配置命令"></a>配置命令</h5><p>主要在package.json文件里配置</p>
+<pre><code>{   
+    &quot;scripts&quot;: {
+        &quot;prettier-code&quot;: &quot;lint-staged&quot;
+    },
+    &quot;lint-staged&quot;: {
+        &quot;linters&quot;: {
+            &quot;src/**/*.js&quot;: [
+                &quot;prettier-standard&quot;,
+                &quot;git add&quot;
+            ],
+            &quot;src2/**/*.js&quot;: [
+                &quot;prettier-standard&quot;,
+                &quot;git add&quot;
+            ]
+        }
+    },
+    &quot;pre-commit&quot;: [
+        &quot;prettier-code&quot;
+    ],
+    &quot;devDependencies&quot;: {
+        &quot;lint-staged&quot;: &quot;^3.4.0&quot;,
+        &quot;pre-commit&quot;: &quot;^1.2.2&quot;,
+        &quot;prettier-standard&quot;: &quot;^1.0.6&quot;
+    }
+}
+</code></pre><p>这样，在用git提交代码前，会对相应代码目录进行校验和风格检查，并自动格式化</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2015/08/11/swift-UILabel/" itemprop="url">
-              
-                <span itemprop="name">swift UILabel</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-08-11T13:22:59+08:00"
-              content="2015-08-11" >
-          08-11
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/25/NSNumber/" rel="next" title="NSNumber">
+                <i class="fa fa-chevron-left"></i> NSNumber
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/24/webpack-start-快速启动demo/" rel="prev" title="webpack-start 快速启动demo">
+                webpack-start 快速启动demo <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -271,6 +406,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -290,8 +429,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -341,6 +489,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装插件"><span class="nav-number">1.</span> <span class="nav-text">安装插件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置命令"><span class="nav-number">2.</span> <span class="nav-text">配置命令</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -444,6 +603,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

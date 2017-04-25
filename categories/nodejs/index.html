@@ -84,17 +84,15 @@
 
 
 
-<meta name="description" content="NSSet// 集合的创建 NSSet *set1 = [NSSet setWithObjects:@&amp;quot;1&amp;quot;,@&amp;quot;2&amp;quot;, nil]; NSSet *set2 = [[NSSet alloc] initWithObjects:@&amp;quot;2&amp;quot;,@&amp;quot;3&amp;quot;,@&amp;quot;4&amp;quot;,@&amp;quot;5&amp;quot;, nil]; N">
-<meta name="keywords">
-<meta property="og:type" content="article">
-<meta property="og:title" content="NSSet和NSMutableSet">
-<meta property="og:url" content="http://ieake.com/2017/04/24/NSSet和NSMutableSet/index.html">
+<meta name="description" content="stay foolish stay hungry">
+<meta property="og:type" content="website">
+<meta property="og:title" content="枫之舞">
+<meta property="og:url" content="http://ieake.com/categories/nodejs/index.html">
 <meta property="og:site_name" content="枫之舞">
-<meta property="og:description" content="NSSet// 集合的创建 NSSet *set1 = [NSSet setWithObjects:@&amp;quot;1&amp;quot;,@&amp;quot;2&amp;quot;, nil]; NSSet *set2 = [[NSSet alloc] initWithObjects:@&amp;quot;2&amp;quot;,@&amp;quot;3&amp;quot;,@&amp;quot;4&amp;quot;,@&amp;quot;5&amp;quot;, nil]; N">
-<meta property="og:updated_time" content="2017-04-24T01:59:20.000Z">
+<meta property="og:description" content="stay foolish stay hungry">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NSSet和NSMutableSet">
-<meta name="twitter:description" content="NSSet// 集合的创建 NSSet *set1 = [NSSet setWithObjects:@&amp;quot;1&amp;quot;,@&amp;quot;2&amp;quot;, nil]; NSSet *set2 = [[NSSet alloc] initWithObjects:@&amp;quot;2&amp;quot;,@&amp;quot;3&amp;quot;,@&amp;quot;4&amp;quot;,@&amp;quot;5&amp;quot;, nil]; N">
+<meta name="twitter:title" content="枫之舞">
+<meta name="twitter:description" content="stay foolish stay hungry">
 
 
 
@@ -115,9 +113,9 @@
 
 
 
-  <link rel="canonical" href="http://ieake.com/2017/04/24/NSSet和NSMutableSet/"/>
+  <link rel="canonical" href="http://ieake.com/categories/nodejs/"/>
 
-  <title> NSSet和NSMutableSet | 枫之舞 </title>
+  <title> 分类: nodejs | 枫之舞 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -138,7 +136,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -226,184 +224,47 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <section id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        nodejs
+        <small>分类</small>
+      </h2>
+    </div>
 
     
-      <header class="post-header">
+      
 
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
+            <a class="post-title-link" href="/2017/04/25/代码美化及风格统一工具/" itemprop="url">
               
-                NSSet和NSMutableSet
+                <span itemprop="name">代码美化及风格统一工具</span>
               
-            
-          </h1>
+            </a>
         
+      </h1>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-24T09:59:20+08:00" content="2017-04-24">
-              2017-04-24
-            </time>
-          </span>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-04-25T10:57:24+08:00"
+              content="2017-04-25" >
+          04-25
+        </time>
+      </div>
 
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h3 id="NSSet"><a href="#NSSet" class="headerlink" title="NSSet"></a>NSSet</h3><pre><code>// 集合的创建
-NSSet *set1 = [NSSet setWithObjects:@&quot;1&quot;,@&quot;2&quot;, nil];
-NSSet *set2 = [[NSSet alloc] initWithObjects:@&quot;2&quot;,@&quot;3&quot;,@&quot;4&quot;,@&quot;5&quot;, nil];
-NSArray *array1 = [NSArray arrayWithObjects:@&quot;7&quot;,@&quot;8&quot;, @&quot;10&quot;,@&quot;11&quot;, nil];
-NSSet *set3 = [NSSet setWithArray:array1];
-NSSet *set4 = [NSSet setWithSet:set2];
-NSLog(@&quot;set1: %@&quot;, set1);
-NSLog(@&quot;set2: %@&quot;, set2);
-NSLog(@&quot;set3: %@&quot;, set3);
-NSLog(@&quot;set4: %@&quot;, set4);
-
-// 集合中元素的个数
-int count = [set2 count];
-NSLog(@&quot;%d&quot;, count);
-
-// 将集合返回一个数组
-NSArray *objects = [set1 allObjects];
-NSLog(@&quot;objects : %@&quot;, objects);
-
-// 获取集合中任意一个对象
-id object = [set2 anyObject];
-NSLog(@&quot;%@&quot;, object);
-
-// 集合是否包含某个元素
-BOOL isContain = [set2 containsObject:@&quot;3&quot;];
-NSLog(@&quot;%d&quot;, isContain);
-
-// 集合间是否存在交集
-BOOL isIntersect = [set1 intersectsSet:set2];
-NSLog(@&quot;%d&quot;, isIntersect);
-
-// 集合是否另一个集合匹配
-BOOL isEqual = [set1 isEqualToSet:set2];
-NSLog(@&quot;%d&quot;, isEqual);
-
-// 集合是否是另一个集合的子集
-BOOL isSub = [set1 isSubsetOfSet:set2];
-NSLog(@&quot;%d&quot;, isSub);
-
-// 追加新的集合
-NSSet *set5 = [NSSet setWithObjects:@&quot;one&quot;, nil];
-NSSet *appSet1 = [set5 setByAddingObject:@&quot;two&quot;];
-NSLog(@&quot;%@&quot;, appSet1);
-
-NSSet *appSet2 = [set5 setByAddingObjectsFromSet: set1];
-NSLog(@&quot;%@&quot;, appSet2);
-
-NSSet *appSet3 = [set5 setByAddingObjectsFromArray:array1];
-NSLog(@&quot;%@&quot;, appSet3);
-</code></pre><h3 id="NSMutableSet"><a href="#NSMutableSet" class="headerlink" title="NSMutableSet"></a>NSMutableSet</h3><pre><code>NSMutableSet *set6 = [NSMutableSet setWithObjects:@&quot;1&quot;, @&quot;2&quot;, @&quot;a&quot; , nil];
-NSMutableSet *set7 = [NSMutableSet setWithObjects:@&quot;1&quot;, @&quot;3&quot;, @&quot;a&quot; , nil];
-
-// 减去相同的元素
- [set6 minusSet:set7];
-
-// 取得两个集合的交集
- [set6 intersectSet:set7];
-
-// 两个集合的并集
- [set6 unionSet:set7];
-
-// 删除指定的对象
-[set6 removeObject:@&quot;2&quot;];
-
-NSLog(@&quot;set6: %@&quot;, set6);
-</code></pre>
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/04/24/NSDictionary和NSMutableDictionary/" rel="next" title="NSDictionary和NSMutableDictionary">
-                <i class="fa fa-chevron-left"></i> NSDictionary和NSMutableDictionary
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/24/NSNumber/" rel="prev" title="NSNumber">
-                NSNumber <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+
 
 
           </div>
@@ -411,10 +272,6 @@ NSLog(@&quot;set6: %@&quot;, set6);
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -434,17 +291,8 @@ NSLog(@&quot;set6: %@&quot;, set6);
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -455,7 +303,7 @@ NSLog(@&quot;set6: %@&quot;, set6);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -463,7 +311,7 @@ NSLog(@&quot;set6: %@&quot;, set6);
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -472,7 +320,7 @@ NSLog(@&quot;set6: %@&quot;, set6);
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -494,17 +342,6 @@ NSLog(@&quot;set6: %@&quot;, set6);
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#NSSet"><span class="nav-number">1.</span> <span class="nav-text">NSSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSMutableSet"><span class="nav-number">2.</span> <span class="nav-text">NSMutableSet</span></a></li></ol></div>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -608,10 +445,6 @@ NSLog(@&quot;set6: %@&quot;, set6);
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 

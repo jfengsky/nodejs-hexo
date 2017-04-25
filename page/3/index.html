@@ -248,6 +248,138 @@
             
               
                 
+                <a class="post-title-link" href="/2015/09/01/可选值-可选类型/" itemprop="url">
+                  可选值,可选类型
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-01T13:25:27+08:00" content="2015-09-01">
+              2015-09-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/swift/" itemprop="url" rel="index">
+                    <span itemprop="name">swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>var optValue1: Int?       // 没有值 optValue1为nil
+var optValue2: Int? = 9   // 有值
+
+// 对一个可选值的强制解析(注意末尾的感叹号), 如果optValue1没有值,会导致一个运行错误
+//var sValue: Int = optValue1!
+//println(sValue)
+
+// 可选绑定
+if var sValue = optValue1 {
+  println(sValue)
+}
+
+// 隐式解析可选类型,两张状态:有值,没有值(nil)
+var impOptValue: Int! = 8
+if impOptValue == 8 {
+  println(impOptValue)
+}
+
+// 不需要强制解析(末尾可不加感叹号)
+var iValue: Int = impOptValue
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/08/11/swift-UILabel/" itemprop="url">
                   swift UILabel
                 </a>
@@ -808,7 +940,7 @@ println(errorMessage2); // -&gt; &quot;Not Found&quot;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -816,7 +948,7 @@ println(errorMessage2); // -&gt; &quot;Not Found&quot;
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -825,7 +957,7 @@ println(errorMessage2); // -&gt; &quot;Not Found&quot;
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

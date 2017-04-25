@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="UILabel," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,17 +84,17 @@
 
 
 
-<meta name="description" content="// 设置label位置和大小 let textLabel = UILabel(frame:CGRectMake(0, 30, 300, 30));  // 设置文本 textLabel.text = &amp;quot;测试label&amp;quot;;  // 设置背景颜色 var redColor = UIColor(red:1.0,green:0,blue:0,alpha:1.0); textLabel">
-<meta name="keywords" content="UILabel">
+<meta name="description" content="NSArray的一些方法总结// 数组的创建 NSArray *array1 = [NSArray arrayWithObject:@&amp;quot;one&amp;quot;]; NSArray *array2 = [NSArray arrayWithObjects:@&amp;quot;one&amp;quot;, @&amp;quot;two&amp;quot;, @&amp;quot;three&amp;quot;, @&amp;quot;four&amp;quo">
+<meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="swift UILabel">
-<meta property="og:url" content="http://ieake.com/2015/08/11/swift-UILabel/index.html">
+<meta property="og:title" content="NSArray和NSMutableArray">
+<meta property="og:url" content="http://ieake.com/2017/04/25/NSArray和NSMutableArray/index.html">
 <meta property="og:site_name" content="枫之舞">
-<meta property="og:description" content="// 设置label位置和大小 let textLabel = UILabel(frame:CGRectMake(0, 30, 300, 30));  // 设置文本 textLabel.text = &amp;quot;测试label&amp;quot;;  // 设置背景颜色 var redColor = UIColor(red:1.0,green:0,blue:0,alpha:1.0); textLabel">
+<meta property="og:description" content="NSArray的一些方法总结// 数组的创建 NSArray *array1 = [NSArray arrayWithObject:@&amp;quot;one&amp;quot;]; NSArray *array2 = [NSArray arrayWithObjects:@&amp;quot;one&amp;quot;, @&amp;quot;two&amp;quot;, @&amp;quot;three&amp;quot;, @&amp;quot;four&amp;quo">
 <meta property="og:updated_time" content="2017-04-25T03:13:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="swift UILabel">
-<meta name="twitter:description" content="// 设置label位置和大小 let textLabel = UILabel(frame:CGRectMake(0, 30, 300, 30));  // 设置文本 textLabel.text = &amp;quot;测试label&amp;quot;;  // 设置背景颜色 var redColor = UIColor(red:1.0,green:0,blue:0,alpha:1.0); textLabel">
+<meta name="twitter:title" content="NSArray和NSMutableArray">
+<meta name="twitter:description" content="NSArray的一些方法总结// 数组的创建 NSArray *array1 = [NSArray arrayWithObject:@&amp;quot;one&amp;quot;]; NSArray *array2 = [NSArray arrayWithObjects:@&amp;quot;one&amp;quot;, @&amp;quot;two&amp;quot;, @&amp;quot;three&amp;quot;, @&amp;quot;four&amp;quo">
 
 
 
@@ -115,9 +115,9 @@
 
 
 
-  <link rel="canonical" href="http://ieake.com/2015/08/11/swift-UILabel/"/>
+  <link rel="canonical" href="http://ieake.com/2017/04/25/NSArray和NSMutableArray/"/>
 
-  <title> swift UILabel | 枫之舞 </title>
+  <title> NSArray和NSMutableArray | 枫之舞 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -247,7 +247,7 @@
             
             
               
-                swift UILabel
+                NSArray和NSMutableArray
               
             
           </h1>
@@ -259,8 +259,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-11T13:22:59+08:00" content="2015-08-11">
-              2015-08-11
+            <time itemprop="dateCreated" datetime="2017-04-25T11:13:35+08:00" content="2017-04-25">
+              2017-04-25
             </time>
           </span>
 
@@ -306,30 +306,95 @@
       
 
       
-        <pre><code>// 设置label位置和大小
-let textLabel = UILabel(frame:CGRectMake(0, 30, 300, 30));
+        <h3 id="NSArray的一些方法总结"><a href="#NSArray的一些方法总结" class="headerlink" title="NSArray的一些方法总结"></a>NSArray的一些方法总结</h3><pre><code>// 数组的创建
+NSArray *array1 = [NSArray arrayWithObject:@&quot;one&quot;];
+NSArray *array2 = [NSArray arrayWithObjects:@&quot;one&quot;, @&quot;two&quot;, @&quot;three&quot;, @&quot;four&quot;, @&quot;five&quot;,nil];
+NSArray *array3 = [NSArray arrayWithArray:array2];
+NSLog(@&quot;array1 : %@&quot;, array1);
+NSLog(@&quot;array2 : %@&quot;, array2);
+NSLog(@&quot;array3 : %@&quot;, array3);
+NSArray *array4 = [[NSArray alloc] initWithArray:array1];
 
-// 设置文本
-textLabel.text = &quot;测试label&quot;;
+// 获取数组中元素的个数
+int count = [array2 count];
+NSLog(@&quot;%d&quot;, count);   // =&gt; 5
 
-// 设置背景颜色
-var redColor = UIColor(red:1.0,green:0,blue:0,alpha:1.0);
-textLabel.backgroundColor = redColor;
+NSString *string1 = [array2 objectAtIndex:1];
+NSLog(@&quot;%@&quot;, string1);  // =&gt; two
 
-// 设置文本对其方式
-textLabel.textAlignment = NSTextAlignment.Center;
+// 追加对象,返回一个新的数组
+NSArray *array5 = [array2 arrayByAddingObject:@&quot;six&quot;];
+NSLog(@&quot;array5 : %@&quot;, array5);
 
-// 设置字体颜色
-textLabel.textColor = UIColor.blueColor();
+// 用指定的字符串把数组中的元素连接起来
+NSString *string2 = [array5 componentsJoinedByString:@&quot;|&quot;];
+NSLog(@&quot;%@&quot;, string2);
 
-// 设置字体和大小
-textLabel.font = UIFont(name:&quot;Thonburi&quot;,size:30);
+// 判断数组中是否存在一个指定的对象
+BOOL isContain = [array5 containsObject:@&quot;three&quot;];
+NSLog(@&quot;%d&quot;, isContain);
 
-let Color1 = UIColor(red:255,green:255,blue:0,alpha:1);
+// 根据指定的对象返回索引下标
+NSInteger index = [array5 indexOfObject:@&quot;three&quot;];
+NSLog(@&quot;%d&quot;, index);
 
+// 返回数组中的最后一个元素
+NSString *lastObject = [array5 lastObject];
+NSLog(@&quot;%@&quot;, lastObject);
+</code></pre><h3 id="NSMutableArray的一些方法总结"><a href="#NSMutableArray的一些方法总结" class="headerlink" title="NSMutableArray的一些方法总结"></a>NSMutableArray的一些方法总结</h3><ul>
+<li>NSMutableArray继承自NSArray</li>
+</ul>
+<pre><code>// 可变数组
+NSMutableArray *mArray1 = [NSMutableArray array];
+NSLog(@&quot;%@&quot;, mArray1);
 
-// 把UILabel放入视图
-self.view.addSubview(textLabel)
+// 创建一个有5个元素的可变数组
+NSMutableArray *mArray2 = [NSMutableArray arrayWithCapacity:5];
+NSLog(@&quot;%@&quot;, mArray2);
+
+NSMutableArray *mArray3 = [NSMutableArray arrayWithObjects:@&quot;one&quot;, @&quot;two&quot;, nil];
+NSLog(@&quot;%@&quot;, mArray3);
+
+//添加元素
+[mArray3 addObject:@&quot;three&quot;];
+NSLog(@&quot;%@&quot;, mArray3);
+
+// 插入元素
+[mArray3 insertObject:@&quot;four&quot; atIndex:3];
+NSLog(@&quot;%@&quot;, mArray3);
+
+// 移除最后一个元素
+[mArray3 removeLastObject];
+NSLog(@&quot;%@&quot;, mArray3);
+
+// 移除指定元素
+[mArray3 removeObject:@&quot;two&quot;];
+NSLog(@&quot;%@&quot;, mArray3);
+
+// 根据索引下标删除
+[mArray3 removeObjectAtIndex:1];
+NSLog(@&quot;%@&quot;, mArray3);
+
+[mArray3 addObject:@&quot;six&quot;];
+[mArray3 addObject:@&quot;seven&quot;];
+[mArray3 addObject:@&quot;eight&quot;];
+
+// 根据数组删除
+NSArray *deleteArray = [NSArray arrayWithObjects:@&quot;seven&quot;,@&quot;eight&quot;,nil];
+[mArray3 removeObjectsInArray:deleteArray];
+NSLog(@&quot;%@&quot;, mArray3);
+
+// 替换指定下标的元素
+[mArray3 replaceObjectAtIndex:1 withObject:@&quot;replace&quot;];
+NSLog(@&quot;%@&quot;, mArray3);
+</code></pre><h3 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h3><pre><code>for (NSString *tempString in array5) {
+  NSLog(@&quot;found: %@&quot;, tempString);
+}
+
+// 当不确定数组的元素的类型时,可以选择用id
+for (id tempString in array5) {
+  NSLog(@&quot;id found: %@&quot;, tempString);
+}
 </code></pre>
       
     </div>
@@ -350,27 +415,21 @@ self.view.addSubview(textLabel)
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/UILabel/" rel="tag">#UILabel</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/01/可选值-可选类型/" rel="next" title="可选值,可选类型">
-                <i class="fa fa-chevron-left"></i> 可选值,可选类型
+              <a href="/2017/04/25/hello-world/" rel="next" title="Hello hexo">
+                <i class="fa fa-chevron-left"></i> Hello hexo
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/18/swift-Optionals-可选值/" rel="prev" title="swift Optionals(可选值)">
-                swift Optionals(可选值) <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/25/NSNumber/" rel="prev" title="NSNumber">
+                NSNumber <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -485,7 +544,7 @@ self.view.addSubview(textLabel)
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#NSArray的一些方法总结"><span class="nav-number">1.</span> <span class="nav-text">NSArray的一些方法总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSMutableArray的一些方法总结"><span class="nav-number">2.</span> <span class="nav-text">NSMutableArray的一些方法总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遍历数组"><span class="nav-number">3.</span> <span class="nav-text">遍历数组</span></a></li></ol></div>
             
           </div>
         </section>
